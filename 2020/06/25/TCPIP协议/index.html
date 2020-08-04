@@ -461,10 +461,10 @@
                 <p>[toc]</p>
 <h1 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h1><h2 id="18、2MSL等待的原因"><a href="#18、2MSL等待的原因" class="headerlink" title="18、2MSL等待的原因"></a>18、2MSL等待的原因</h2><p>​        2MSL等待的原因：报文段有生存时间，当连接关闭时，有可能收到迟到的报文段。这时，若立马就建立新的连接（同一端口），那么新的连接就会接收迟到的报文，误以为是发给自己的。另一个原因是可靠的实现全双工连接的终止。</p>
 <p>​        在<code>FIN_WAIT_2</code>状态我们已经发出了<code>FIN</code>，并且另一端也已对它进行确认。除非我们在实行半关闭，否则将等待另一端的应用层意识到它已收到一个文件结束符说明，并向我们发一个FIN来关闭另一方向的连接。只有当另一端的进程完成这个关闭，我们这端才会从<code>FIN_WAIT_2</code>状态进入<code>TIME_WAIT</code>状态。这意味着我们这端可能永远保持这个状态(<code>FIN_WAIT_2</code>,如果对方不发送FIN包)。另一端也将处于<code>CLOSE_WAIT</code>状态，并一直保持这个状态直到应用层决定进行关闭（调用<code>close</code>然后进入<code>LAST_ACK</code>）。</p>
-<h2 id="19TCP的交互数据流"><a href="#19TCP的交互数据流" class="headerlink" title="19TCP的交互数据流"></a>19TCP的交互数据流</h2><h3 id="经受时延的确认"><a href="#经受时延的确认" class="headerlink" title="经受时延的确认"></a>经受时延的确认</h3><p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200626132722352.png" alt="image-20200626132722352"></p>
+<h2 id="19TCP的交互数据流"><a href="#19TCP的交互数据流" class="headerlink" title="19TCP的交互数据流"></a>19TCP的交互数据流</h2><h3 id="经受时延的确认"><a href="#经受时延的确认" class="headerlink" title="经受时延的确认"></a>经受时延的确认</h3><p><img src="MDimages%5Cimage-20200626132722352.png" alt="image-20200626132722352"></p>
 <p>2、3过程可以进行合并（经受时延的确认）</p>
 <p><strong>通常TCP在接收到数据时并不立即发送ACK，相反，它推迟发送，以便将ACK与需要沿该方向发送的数据一起发送（有时这种现象为数据捎带的ACK）。绝大数实现采用的时延为200ms，也就是说，TCP将以最大200ms的时延等待是否有数据一起发送。</strong></p>
-<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200626151801875.png" alt="image-20200626151801875"></p>
+<p><img src="MDimages%5Cimage-20200626151801875.png" alt="image-20200626151801875"></p>
 <h3 id="Nagle算法"><a href="#Nagle算法" class="headerlink" title="Nagle算法"></a>Nagle算法</h3><p>该算法要求一个 T C P连接上最多只能有一个未被确认的未完成的小分组，在该分组的确认到达之前不能发送其他的小分组。</p>
 <p>该算法的优点在于它是自适应的：确认到达得越快，数据也就发送得越快。*<strong>*可以减少网络上的微小分组数目，降低拥塞出现的可能\</strong>*<em>（局域网这些小分组通常不会引起麻烦，但在较慢的广域网则存在拥塞的可能）。*</em>*<em>但相应的，因为不是立即ACK，也会增加更多的时延。***</em></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
@@ -478,7 +478,7 @@
 </ul>
 <h2 id="20TCP的成块数据流"><a href="#20TCP的成块数据流" class="headerlink" title="20TCP的成块数据流"></a>20TCP的成块数据流</h2><p>​        进行成块数据有效传输的最重要的方法是 T C P的滑动窗口协议。我们考察了 T C P为使发送方和接收方之间的管道充满来获得最可能快的传输速度而采用的方法。</p>
 <p>​        对于一些数据吞吐量要求较高的应用，总是希望每次发送尽可能多的数据到主机，对于这类应用。TCP使用滑动窗体协议，该协议<strong>允许发送方在停止并等待确认前能够连续发送多个分组，由于发送方必须每发一个分组就不必停下来等待确认，因此能够加速数据的传输，并且控制流量的作用</strong>。</p>
-<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200626182917740.png" alt="image-20200626182917740"></p>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p><img src="MDimages%5Cimage-20200626182917740.png" alt="image-20200626182917740"></p>
 <p>TCP利用滑动窗口来进行流量控制</p>
 <p>滑动窗口协议（Sliding Window Protocol），属于TCP协议的一种应用，用于网络数据传输时的流量控制，以避免拥塞的发生。该协议允许发送方在停止并等待确认前发送多个数据分组。由于发送方不必每发一个分组就停下来等待确认，因此该协议可以加速数据的传输，提高网络吞吐量。</p>
 <p>TCP通过滑动窗口的概念来进行流量控制。设想在发送端发送数据的速度很快而接收端接收速度却很慢的情况下，为了保证数据不丢失，显然需要进行流量控制， 协调好通信双方的工作节奏。所谓滑动窗口，可以理解成接收端所能提供的缓冲区大小。TCP利用一个滑动的窗口来告诉发送端对它所发送的数据能提供多大的缓 冲区。由于窗口由16位bit所定义，所以接收端TCP 能最大提供65535个字节的缓冲。由此，可以利用窗口大小和第一个数据的序列号计算出最大可接收的数据序列号。 </p>

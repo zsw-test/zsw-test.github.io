@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
+    <meta name="keywords" content="Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-01
+                    2020-07-21
                 </div>
                 
 
@@ -458,19 +458,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <p>[toc]</p>
+<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h5 id="剑指offer47-礼物的最大价值"><a href="#剑指offer47-礼物的最大价值" class="headerlink" title="剑指offer47 礼物的最大价值"></a>剑指offer47 礼物的最大价值</h5><p>在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
+<h5 id="https-leetcode-cn-com-problems-li-wu-de-zui-da-jie-zhi-lcof-solution-mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu"><a href="#https-leetcode-cn-com-problems-li-wu-de-zui-da-jie-zhi-lcof-solution-mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu" class="headerlink" title="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/">https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/</a></h5><p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200722114530094.png" alt="image-20200722114530094"></p>
+<p><strong>不同的二叉搜索树1</strong></p>
+<h5 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h5><p>假设n个节点存在二叉排序树的个数是G(n)，令f(i)为以i为根的二叉搜索树的个数，则<br>G(n) = f(1) + f(2) + f(3) + f(4) + … + f(n)G(n)=f(1)+f(2)+f(3)+f(4)+…+f(n)</p>
+<p>当i为根节点时，其左子树节点个数为i-1个，右子树节点为n-i，则<br>f(i) = G(i-1)*G(n-i)f(i)=G(i−1)∗G(n−i)</p>
+<p>综合两个公式可以得到 卡特兰数 公式<br>G(n) = G(0)*G(n-1)+G(1)*G(n-2)+…+G(n-1)*G(0)G(n)=G(0)∗G(n−1)+G(1)∗(n−2)+…+G(n−1)∗G(0)</p>
+<p><strong>不同的二叉搜索树2</strong></p>
+<p>递归</p>
+<pre><code>    for (int i = start; i &lt;= end; i++) &#123;
+        // 获得所有可行的左子树集合
+        vector&lt;TreeNode*&gt; leftTrees = generateTrees(start, i - 1);
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+        // 获得所有可行的右子树集合
+        vector&lt;TreeNode*&gt; rightTrees = generateTrees(i + 1, end);
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        // 从左子树集合中选出一棵左子树，从右子树集合中选出一棵右子树，拼接到根节点上
+        for (auto&amp; left : leftTrees) &#123;
+            for (auto&amp; right : rightTrees) &#123;
+                TreeNode* currTree = new TreeNode(i);
+                currTree-&gt;left = left;
+                currTree-&gt;right = right;
+                allTrees.emplace_back(currTree);
+            &#125;
+        &#125;
+    &#125;</code></pre>
+<h3 id="找数字规律"><a href="#找数字规律" class="headerlink" title="找数字规律"></a>找数字规律</h3><h4 id="剑指43-1-n整数中1出现的次数"><a href="#剑指43-1-n整数中1出现的次数" class="headerlink" title="剑指43  1~n整数中1出现的次数"></a>剑指43  1~n整数中1出现的次数</h4><p>输入一个整数 <code>n</code> ，求1～n这n个整数的十进制表示中1出现的次数。</p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200721124257385.png" alt="image-20200721124257385"></p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200721124239937.png" alt="image-20200721124239937"></p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200721124310369.png" alt="image-20200721124310369"></p>
+<h4 id="剑指44-数字序列中某一位的数字"><a href="#剑指44-数字序列中某一位的数字" class="headerlink" title="剑指44 数字序列中某一位的数字"></a>剑指44 数字序列中某一位的数字</h4><p>数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。</p>
+<p>请写一个函数，求任意第n位对应的数字。</p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200721123906064.png" alt="image-20200721123906064"></p>
+<h3 id="剑指45-把数组排成最小的数（自定义排序）"><a href="#剑指45-把数组排成最小的数（自定义排序）" class="headerlink" title="剑指45. 把数组排成最小的数（自定义排序）"></a>剑指45. 把数组排成最小的数（自定义排序）</h3><p>输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。</p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200721133821377.png" alt="image-20200721133821377"></p>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>剑指offer11 旋转数组的最小值 </p>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。 </p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/">https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/</a></p>
+<p><img src="C:\Users\Mloong\AppData\Roaming\Typora\typora-user-images\image-20200722110440553.png" alt="image-20200722110440553"></p>
 
             </div>
             <hr/>
@@ -496,7 +522,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/01/hello-world/">http://yoursite.com/2020/08/01/hello-world/</a>
+                    <a href="http://yoursite.com/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">http://yoursite.com/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -703,20 +729,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/01/test/">
+                <a href="/2020/08/01/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这一个测试的Blog我用来测试我的文章
-
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
@@ -732,14 +757,6 @@
                     </div>
                 </div>
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abs/">
-                        <span class="chip bg-color">abs</span>
-                    </a>
-                    
-                </div>
-                
             </div>
         </div>
         
@@ -749,25 +766,33 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">
+                <a href="/2020/07/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="进程的组成">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">进程的组成</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            [toc]
-算法学习动态规划剑指offer47 礼物的最大价值在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给
+                            进程的组成进程是程序的一次执行过程，是系统进行资源分配和调度的一个独立单位。
+
+PCB(进程控制块) 进程的管理者
+进程描述信息、进程控制和管理信息、资源分配清单、处理机相关信息
+
+程序段 
+ 存放要执行的代码
+
+数据段 
+ 存放程序运行过
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-19
                             </span>
                         <span class="publish-author">
                             

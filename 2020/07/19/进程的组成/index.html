@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
+    <meta name="keywords" content="进程的组成, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>进程的组成 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">进程的组成</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-01
+                    2020-07-19
                 </div>
                 
 
@@ -458,19 +458,75 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><p>进程是程序的一次执行过程，是系统进行资源分配和调度的一个独立单位。</p>
+<ul>
+<li><p>PCB(进程控制块) 进程的管理者</p>
+<p>进程描述信息、进程控制和管理信息、资源分配清单、处理机相关信息</p>
+</li>
+<li><p>程序段 </p>
+<p> 存放要执行的代码</p>
+</li>
+<li><p>数据段 </p>
+<p> 存放程序运行过程中处理的各种数据</p>
+</li>
+</ul>
+<h3 id="进程组织方式"><a href="#进程组织方式" class="headerlink" title="进程组织方式"></a>进程组织方式</h3><ul>
+<li>链接方式  （链表）</li>
+<li>索引方式  （索引表、指针数组）</li>
+</ul>
+<p>动态、并发、独立、异步、结构性。</p>
+<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><ul>
+<li><p>运行   占有cpu，在cpu上运行</p>
+</li>
+<li><p>就绪   已经具备运行条件，但是没有空闲cpu，具备所有的资源，只差cpu</p>
+</li>
+<li><p>阻塞   因等待某一事件而不能运行，某种资源得不到</p>
+</li>
+<li><p>创建</p>
+</li>
+<li><p>终止</p>
+</li>
+</ul>
+<h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><p>通过原语实现进程状态的转换</p>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>进程之间的信息交换</p>
+<ul>
+<li><p>共享存储</p>
+<p>通过共享空间来访问（互斥的访问）</p>
+<ul>
+<li><p>基于数据结构的共享（低级）</p>
+</li>
+<li><p>基于存储区的共享（高级）</p>
+</li>
+</ul>
+</li>
+<li><p>管道通信</p>
+<p>在内存当中开辟一个大小固定的缓冲区，半双工通信。</p>
+</li>
+<li><p>消息传递</p>
+<p>格式化消息，通过原语进行数据交换。ddddd</p>
+<ul>
+<li><p>直接通信   挂到消息缓冲队列中</p>
+</li>
+<li><p>间接通信    传入到信箱中</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>创建和销毁进程的成本太高，线程更加轻量，提高并发度。</p>
+<ul>
+<li>用户级线程   从用户视角看的线程 建立在用户使用的线程库中（无需切换到核心态）</li>
+<li>内核级线程   从操作系统视角看的线程、核心态下才能完成。（内核级线程才是处理机分配的单位）</li>
+<li>组合方式  用户和内核级线程的组合</li>
+</ul>
+<p>多线程模型</p>
+<ul>
+<li><p>多对一：进程管理开销小效率高，但是一个线程阻塞会导致整个进程都阻塞（并发度低）</p>
+</li>
+<li><p>一对一：各个线程可以分配到多核CPU并行处理并发度高，但是进程管理开销大</p>
+</li>
+<li><p>多对多：及二者所长</p>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -496,7 +552,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/01/hello-world/">http://yoursite.com/2020/08/01/hello-world/</a>
+                    <a href="http://yoursite.com/2020/07/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90/">http://yoursite.com/2020/07/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -703,52 +759,6 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/01/test/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
-                        
-                        <span class="card-title">test</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            这一个测试的Blog我用来测试我的文章
-
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abs/">
-                        <span class="chip bg-color">abs</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
@@ -766,8 +776,46 @@
                         
                     </div>
                     <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/25/TCPIP%E5%8D%8F%E8%AE%AE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            [toc]
+TCP/IP协议18、2MSL等待的原因​        2MSL等待的原因：报文段有生存时间，当连接关闭时，有可能收到迟到的报文段。这时，若立马就建立新的连接（同一端口），那么新的连接就会接收迟到的报文，误以为是发给自己的。另
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-25
                             </span>
                         <span class="publish-author">
                             

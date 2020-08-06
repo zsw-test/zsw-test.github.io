@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="c++智能指针, Hexo">
+    <meta name="keywords" content="c++ Compile and Linking, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>c++智能指针 | Hexo</title>
+    <title>c++ Compile and Linking | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">c++智能指针</h1>
+                    <h1 class="description center-align post-title">c++ Compile and Linking</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-03
+                    2020-08-06
                 </div>
                 
 
@@ -458,20 +458,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="c-智能指针"><a href="#c-智能指针" class="headerlink" title="c++智能指针"></a>c++智能指针</h3><h4 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr<T></T></h4><p>make_shared进行创建对象，</p>
-<p>shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804154501911.png" alt="image-20200804154501911"></p>
-<p>不要将智能指针和new一起用，容易出现错误。</p>
-<p><strong>如果使用的智能指针管理的资源你不是new分配的内存，应该传递一个删除器来管理删除操作</strong></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155256694.png" alt="image-20200804155256694"></p>
-<h4 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr<T></T></h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160241173.png" alt="image-20200804160241173"></p>
-<h4 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr<T></T></h4><p>unique_ptr不支持拷贝和复制，也没有make_shared，某个时刻智能有一个unique_ptr指向一个给定对象，初始化unique_ptr只能使用new直接初始化方式。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155637008.png" alt="image-20200804155637008"></p>
-<p>可以使用release来放弃该对象的操纵权返回一个指针，或者使用reset重置只指向的对象</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160115299.png" alt="image-20200804160115299"></p>
-<h4 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h4><p>弱智能指针 “弱”共享   不改变引用计数  需要由shared_ptr来初始化</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160731597.png" alt="image-20200804160731597"></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804161054150.png" alt="image-20200804161054150"></p>
+                <h4 id="c-编译过程"><a href="#c-编译过程" class="headerlink" title="c++编译过程"></a>c++编译过程</h4><h5 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h5><p>预处理-编译成机械码</p>
+<p>将文本转换成二进制文件</p>
+<p>需要有一个存储区来存储全局和静态变量</p>
+<p>项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互include的话，那么每个都会被当成一个独立编译单元，被编译成obj。</p>
+<p>prepossessing预处理  </p>
+<p>#if #endif #define  等语句</p>
+<p>就是将include的头文件复制粘贴过来   #include  相当于复制粘贴</p>
+<p>编译器优化  会在编译（生成机器码）的过程中将一些可以直接计算的常量计算出来，会智能的减少一些无谓的操作。</p>
+<h5 id="linker"><a href="#linker" class="headerlink" title="linker"></a>linker</h5><p>将c++源码转换到可执行二进制的过程 </p>
+<p>将编译过程中生辰搞的所有对象文件链接起来，找到每个符号和函数的位置，并将它们链接在一起。</p>
+<p>容易出现的链接错误：</p>
+<p>1、unresolved external symbol（未解决的外部符号），当链接器找不到它需要的东西的时候就会出现错误。</p>
+<p>2、找到了一个或多个被定义的符号，链接器找到了多个可以链接的东西。不知道该链接到哪一个。</p>
+<p>如果没有用过这个函数，那么就不会链接它。</p>
+<p>如果加上了static 那么链接就应该只发生在文件内部</p>
+<p>要么声明为静态、或者内联函数。</p>
+<p>要么放在一个cpp中定义，在h中声明。</p>
 
             </div>
             <hr/>
@@ -497,7 +500,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</a>
+                    <a href="http://yoursite.com/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">http://yoursite.com/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -700,9 +703,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
                     <div class="card-image">
@@ -723,9 +727,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -734,6 +738,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -744,41 +749,36 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/01/test/">
+                <a href="/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="c++智能指针">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">c++智能指针</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这一个测试的Blog我用来测试我的文章
+                            c++智能指针shared_ptrmake_shared进行创建对象，
+shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数
 
+不要将智能指针和new一起用，容易出现错误。
+如果使用的智能指针管理的资源你不是new分配的内存，应
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            zsw
+                            John Doe
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abs/">
-                        <span class="chip bg-color">abs</span>
-                    </a>
-                    
                 </div>
                 
             </div>

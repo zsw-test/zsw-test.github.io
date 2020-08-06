@@ -458,20 +458,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="c-智能指针"><a href="#c-智能指针" class="headerlink" title="c++智能指针"></a>c++智能指针</h3><h4 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr<T></h4><p>make_shared进行创建对象，</p>
+                <h3 id="c-智能指针"><a href="#c-智能指针" class="headerlink" title="c++智能指针"></a>c++智能指针</h3><h4 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr<T></T></h4><p>make_shared进行创建对象，</p>
 <p>shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数</p>
-<p><img src="MDimages%5Cimage-20200804154501911.png" alt="image-20200804154501911"></p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804154501911.png" alt="image-20200804154501911"></p>
 <p>不要将智能指针和new一起用，容易出现错误。</p>
 <p><strong>如果使用的智能指针管理的资源你不是new分配的内存，应该传递一个删除器来管理删除操作</strong></p>
-<p><img src="MDimages%5Cimage-20200804155256694.png" alt="image-20200804155256694"></p>
-<h4 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr<T></h4><p><img src="MDimages%5Cimage-20200804160241173.png" alt="image-20200804160241173"></p>
-<h4 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr<T></h4><p>unique_ptr不支持拷贝和复制，也没有make_shared，某个时刻智能有一个unique_ptr指向一个给定对象，初始化unique_ptr只能使用new直接初始化方式。</p>
-<p><img src="MDimages%5Cimage-20200804155637008.png" alt="image-20200804155637008"></p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155256694.png" alt="image-20200804155256694"></p>
+<h4 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr<T></T></h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160241173.png" alt="image-20200804160241173"></p>
+<h4 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr<T></T></h4><p>unique_ptr不支持拷贝和复制，也没有make_shared，某个时刻智能有一个unique_ptr指向一个给定对象，初始化unique_ptr只能使用new直接初始化方式。</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155637008.png" alt="image-20200804155637008"></p>
 <p>可以使用release来放弃该对象的操纵权返回一个指针，或者使用reset重置只指向的对象</p>
-<p><img src="MDimages%5Cimage-20200804160115299.png" alt="image-20200804160115299"></p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160115299.png" alt="image-20200804160115299"></p>
 <h4 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h4><p>弱智能指针 “弱”共享   不改变引用计数  需要由shared_ptr来初始化</p>
-<p><img src="MDimages%5Cimage-20200804160731597.png" alt="image-20200804160731597"></p>
-<p><img src="MDimages%5Cimage-20200804161054150.png" alt="image-20200804161054150"></p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160731597.png" alt="image-20200804160731597"></p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804161054150.png" alt="image-20200804161054150"></p>
 
             </div>
             <hr/>

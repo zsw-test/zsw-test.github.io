@@ -459,7 +459,29 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h5 id="剑指offer47-礼物的最大价值"><a href="#剑指offer47-礼物的最大价值" class="headerlink" title="剑指offer47 礼物的最大价值"></a>剑指offer47 礼物的最大价值</h5><p>在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
+<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h4><p>二叉搜索树中的两个节点被错误地交换。</p>
+<p>请在不改变其结构的情况下，恢复这棵树。</p>
+<p>二叉搜索树：左边的节点的值都比当前节点的值小，右边节点的值都比当前节点大</p>
+<p>特性：通过中序遍历每个节点可以得到一个递增的数组</p>
+<p>中序遍历过程中，记录错误两个错误排序节点，然后进行交换。</p>
+<pre><code>TreeNode* t1, *t2, *pre;
+ void recoverTree(TreeNode* root) &#123;
+    inorder(root);
+    int temp = t1-&gt;val;
+    t1-&gt;val = t2-&gt;val;
+    t2-&gt;val = temp;
+&#125;
+ void inorder(TreeNode* root)&#123;
+    if (root == nullptr) return ;
+    inorder(root-&gt;left);
+    if (pre != nullptr &amp;&amp; pre-&gt;val &gt; root-&gt;val) &#123;
+        if (t1 == nullptr) t1 = pre;
+        t2 = root;
+    &#125;
+    pre = root;
+    inorder(root-&gt;right);
+&#125;</code></pre>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h5 id="剑指offer47-礼物的最大价值"><a href="#剑指offer47-礼物的最大价值" class="headerlink" title="剑指offer47 礼物的最大价值"></a>剑指offer47 礼物的最大价值</h5><p>在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/">https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/</a></p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200722114530094.png" alt="image-20200722114530094"></p>
 <p><strong>不同的二叉搜索树1</strong></p>
@@ -806,19 +828,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/01/hello-world/">
+                <a href="/2020/08/01/test/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            这一个测试的Blog我用来测试我的文章
+
                         
                     </div>
                     <div class="publish-info">
@@ -828,10 +851,18 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            zsw
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/abs/">
+                        <span class="chip bg-color">abs</span>
+                    </a>
+                    
                 </div>
                 
             </div>

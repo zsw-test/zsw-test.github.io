@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo">
+    <meta name="keywords" content="c++学习, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo</title>
+    <title>c++学习 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">c++学习</h1>
                 </div>
             </div>
         </div>
@@ -459,27 +459,43 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="c-头文件-head-file"><a href="#c-头文件-head-file" class="headerlink" title="c++头文件 head file"></a>c++头文件 head file</h4><p>函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。</p>
-<p>预处理# 符号</p>
-<p>两种头文件保护方式 </p>
+<h5 id="预处理-符号"><a href="#预处理-符号" class="headerlink" title="预处理# 符号"></a>预处理# 符号</h5><p>两种头文件保护方式 </p>
 <ul>
 <li>#pragma once  </li>
 <li>#ifndef #define #endif</li>
 </ul>
 <p>#include 引号和尖括号</p>
 <p>方括号只用于编译器的include路径，引号用于所有，引号会从当前相对位置开始寻找，在从include路径寻找</p>
-<p>指针 pointer</p>
-<p>指针就是一个内存地址，一个包含地址的变量、整形变量。</p>
+<h5 id="指针-pointer"><a href="#指针-pointer" class="headerlink" title="指针 pointer"></a>指针 pointer</h5><p>指针就是一个内存地址，一个包含地址的变量、整形变量。</p>
 <p>引用</p>
 <p>对某个已存在的变量的引用，与指针不同，必须引用一个已经存在的变量</p>
-<p>class 和 struct 的区别</p>
-<p>主要是里面的元素的访问修饰符的区别</p>
+<h5 id="class-和-struct-的区别"><a href="#class-和-struct-的区别" class="headerlink" title="class 和 struct 的区别"></a>class 和 struct 的区别</h5><p>主要是里面的元素的访问修饰符的区别</p>
 <p>class主要作为对象的实现</p>
 <p>struct主要用于数据结构的实现 </p>
-<p>static静态变量   存放在静态存储区</p>
-<p>全局static 只属于这个cpp文件，其它cpp不可访问</p>
+<h5 id="static静态变量-存放在静态存储区"><a href="#static静态变量-存放在静态存储区" class="headerlink" title="static静态变量   存放在静态存储区"></a>static静态变量   存放在静态存储区</h5><p>全局static 只属于这个cpp文件，其它cpp不可访问</p>
 <p>class static 属于这个类</p>
 <p>静态局部变量的用法  local static </p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200807212959984.png" alt="image-20200807212959984"></p>
+<h5 id="c-虚函数"><a href="#c-虚函数" class="headerlink" title="c++虚函数"></a>c++虚函数</h5><p>1、多态（polymorphism），即基类指针或者引用，可能指向基类对象，也可能指向派生类对象，会根据运行时具体指向的对象，来调用不同的函数。</p>
+<p>2、如果没有多态，则什么类型的指针或者引用，就会调用什么类型的对象的函数。</p>
+<p>3、每个包含虚函数的类（也叫虚类），都有一个虚函数表（简称虚表），表项是一个虚函数的地址。</p>
+<p>4、如果基类是虚类，则继承类也是虚类。</p>
+<p>5、虚类的对象最前面都是一个虚表指针，指向类的虚表。</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810142956592.png" alt="image-20200810142956592"></p>
+<p>虚函数表包含基类中所有虚函数的映射</p>
+<p>首先 需要额外的内存才能将信息存储到虚函数表中，该函数包含实际基类中指向虚函数表的成员指针</p>
+<p>其次，每当我们调用虚函数时，需要遍历虚函数表以查看该映射哪个函数。</p>
+<h5 id="c-接口"><a href="#c-接口" class="headerlink" title="c++接口"></a>c++接口</h5><p>pure virtual function（纯虚函数） virtual return function() =0  相当于接口</p>
+<p>必须由子类来实现  接口。</p>
+<p>这样做的好处是 所有的子类都会实现该方法。 保证了多态。</p>
+<h5 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html">https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html</a></p>
+<p>抽象类要被子类继承，接口要被类实现。</p>
+<p>接口只能做方法声明，抽象类中可以作方法声明，也可以做方法实现。</p>
+<p>接口里定义的变量只能是公共的静态的常量，抽象类中的变量是普通变量。</p>
+<p>接口是设计的结果，抽象类是重构的结果。</p>
+<p>抽象类和接口都是用来抽象具体对象的，但是接口的抽象级别最高。</p>
+<p>抽象类可以有具体的方法和属性，接口只能有抽象方法和不可变常量。</p>
+<p>抽象类主要用来抽象类别，接口主要用来抽象功能。</p>
 
             </div>
             <hr/>
@@ -717,20 +733,19 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="c++学习">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">c++学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             c++头文件 head file函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。
-预处理# 符号
-两种头文件保护方式 
+预处理# 符号两种头文件保护方式 
 
 #pragma once  
-#if
+#ifn
                         
                     </div>
                     <div class="publish-info">

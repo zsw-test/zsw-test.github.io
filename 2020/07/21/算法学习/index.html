@@ -459,7 +459,27 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h4><p>二叉搜索树中的两个节点被错误地交换。</p>
+<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="计数二进制子串"><a href="#计数二进制子串" class="headerlink" title="计数二进制子串"></a>计数二进制子串</h4><p>给定一个字符串 s，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。</p>
+<p>重复出现的子串要计算它们出现的次数。</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810121217475.png" alt="image-20200810121217475"></p>
+<p>用last来记录之前一个数字的个数，cur来记录当前数字的个数，然后当last&gt;=cur 的时候，ans就++，因为这是肯定是有一个0和1相等的子字符串；</p>
+<pre><code>int countBinarySubstrings(string s) &#123;
+    int last,cur,res;
+    last =0;
+    res=0;
+    cur =1;
+    for(int i=1;i&lt;s.size();++i)
+    &#123;
+        if(s[i]==s[i-1]) cur++;
+        else&#123;
+            last = cur;
+            cur =1;
+        &#125;
+        if(last&gt;=cur) res++;
+    &#125;
+    return res;
+&#125;</code></pre>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h4><p>二叉搜索树中的两个节点被错误地交换。</p>
 <p>请在不改变其结构的情况下，恢复这棵树。</p>
 <p>二叉搜索树：左边的节点的值都比当前节点的值小，右边节点的值都比当前节点大</p>
 <p>特性：通过中序遍历每个节点可以得到一个递增的数组</p>

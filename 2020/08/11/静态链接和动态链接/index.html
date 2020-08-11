@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="c++学习, Hexo">
+    <meta name="keywords" content="静态链接和动态链接, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>c++学习 | Hexo</title>
+    <title>静态链接和动态链接 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,7 +313,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">c++学习</h1>
+                    <h1 class="description center-align post-title">静态链接和动态链接</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-06
+                    2020-08-11
                 </div>
                 
 
@@ -458,44 +458,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="c-头文件-head-file"><a href="#c-头文件-head-file" class="headerlink" title="c++头文件 head file"></a>c++头文件 head file</h4><p>函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。</p>
-<h5 id="预处理-符号"><a href="#预处理-符号" class="headerlink" title="预处理# 符号"></a>预处理# 符号</h5><p>两种头文件保护方式 </p>
-<ul>
-<li>#pragma once  </li>
-<li>#ifndef #define #endif</li>
-</ul>
-<p>#include 引号和尖括号</p>
-<p>方括号只用于编译器的include路径，引号用于所有，引号会从当前相对位置开始寻找，在从include路径寻找</p>
-<h5 id="指针-pointer"><a href="#指针-pointer" class="headerlink" title="指针 pointer"></a>指针 pointer</h5><p>指针就是一个内存地址，一个包含地址的变量、整形变量。</p>
-<p>引用</p>
-<p>对某个已存在的变量的引用，与指针不同，必须引用一个已经存在的变量</p>
-<h5 id="class-和-struct-的区别"><a href="#class-和-struct-的区别" class="headerlink" title="class 和 struct 的区别"></a>class 和 struct 的区别</h5><p>主要是里面的元素的访问修饰符的区别</p>
-<p>class主要作为对象的实现</p>
-<p>struct主要用于数据结构的实现 </p>
-<h5 id="static静态变量-存放在静态存储区"><a href="#static静态变量-存放在静态存储区" class="headerlink" title="static静态变量   存放在静态存储区"></a>static静态变量   存放在静态存储区</h5><p>全局static 只属于这个cpp文件，其它cpp不可访问</p>
-<p>class static 属于这个类</p>
-<p>静态局部变量的用法  local static </p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200807212959984.png" alt="image-20200807212959984"></p>
-<h5 id="c-虚函数"><a href="#c-虚函数" class="headerlink" title="c++虚函数"></a>c++虚函数</h5><p>1、多态（polymorphism），即基类指针或者引用，可能指向基类对象，也可能指向派生类对象，会根据运行时具体指向的对象，来调用不同的函数。</p>
-<p>2、如果没有多态，则什么类型的指针或者引用，就会调用什么类型的对象的函数。</p>
-<p>3、每个包含虚函数的类（也叫虚类），都有一个虚函数表（简称虚表），表项是一个虚函数的地址。</p>
-<p>4、如果基类是虚类，则继承类也是虚类。</p>
-<p>5、虚类的对象最前面都是一个虚表指针，指向类的虚表。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810142956592.png" alt="image-20200810142956592"></p>
-<p>虚函数表包含基类中所有虚函数的映射</p>
-<p>首先 需要额外的内存才能将信息存储到虚函数表中，该函数包含实际基类中指向虚函数表的成员指针</p>
-<p>其次，每当我们调用虚函数时，需要遍历虚函数表以查看该映射哪个函数。</p>
-<h5 id="c-接口"><a href="#c-接口" class="headerlink" title="c++接口"></a>c++接口</h5><p>pure virtual function（纯虚函数） virtual return function() =0  相当于接口</p>
-<p>必须由子类来实现  接口。</p>
-<p>这样做的好处是 所有的子类都会实现该方法。 保证了多态。</p>
-<h5 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html">https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html</a></p>
-<p>抽象类要被子类继承，接口要被类实现。</p>
-<p>接口只能做方法声明，抽象类中可以作方法声明，也可以做方法实现。</p>
-<p>接口里定义的变量只能是公共的静态的常量，抽象类中的变量是普通变量。</p>
-<p>接口是设计的结果，抽象类是重构的结果。</p>
-<p>抽象类和接口都是用来抽象具体对象的，但是接口的抽象级别最高。</p>
-<p>抽象类可以有具体的方法和属性，接口只能有抽象方法和不可变常量。</p>
-<p>抽象类主要用来抽象类别，接口主要用来抽象功能。</p>
+                <p>作为一名C/C++程序员，对于编译链接的过程要了然于胸。首先大概介绍一下，编译分为3步，首先对源文件进行预处理，这个过程主要是处理一些#号定义的命令或语句（如宏、#include、预编译指令#ifdef等），生成*.i文件；然后进行编译，这个过程主要是进行词法分析、语法分析和语义分析等，生成*.s的汇编文件；最后进行汇编，这个过程比较简单，就是将对应的汇编指令翻译成机器指令，生成可重定位的二进制目标文件。以上就是编译的过程，下面主要介绍两种链接方式–静态链接和动态链接。</p>
+<p>​    静态链接和动态链接两者最大的区别就在于链接的时机不一样，静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时，下面来详细介绍这两种链接方式。</p>
+<h2 id="一、静态链接"><a href="#一、静态链接" class="headerlink" title="一、静态链接"></a>一、静态链接</h2><h3 id="1-为什么要进行静态链接"><a href="#1-为什么要进行静态链接" class="headerlink" title="1.为什么要进行静态链接"></a>1.为什么要进行静态链接</h3><p>​    在我们的实际开发中，不可能将所有代码放在一个源文件中，所以会出现多个源文件，而且多个源文件之间不是独立的，而会存在多种依赖关系，如一个源文件可能要调用另一个源文件中定义的函数，但是每个源文件都是独立编译的，即每个*.c文件会形成一个*.o文件，为了满足前面说的依赖关系，则需要将这些源文件产生的目标文件进行链接，从而形成一个可以执行的程序。这个链接的过程就是静态链接</p>
+<h3 id="2-静态链接的原理"><a href="#2-静态链接的原理" class="headerlink" title="2.静态链接的原理"></a>2.静态链接的原理</h3><p>​     由很多目标文件进行链接形成的是静态库，反之静态库也可以简单地看成是一组目标文件的集合，即很多目标文件经过压缩打包后形成的一个文件，如下图，使用ar命令的-a参数查看静态库的组成：</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/20180505235327609" alt="img"></p>
+<p>​    这里的*.o目标文件在我前面的博客《<a target="_blank" rel="noopener" href="https://blog.csdn.net/kang___xi/article/details/79571137">从编写源代码到程序在内存中运行的全过程解析</a>》中已经讲的很清楚了，不清楚的可以看一下。</p>
+<p>​    以下面这个图来简单说明一下从静态链接到可执行文件的过程，根据在源文件中包含的头文件和程序中使用到的库函数，如stdio.h中定义的printf()函数，在libc.a中找到目标文件printf.o(这里暂且不考虑printf()函数的依赖关系)，然后将这个目标文件和我们hello.o这个文件进行链接形成我们的可执行文件。</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/20180505235327609" alt="img"></p>
+<p>​    这里有一个小问题，就是从上面的图中可以看到静态运行库里面的一个目标文件只包含一个函数，如libc.a里面的printf.o只有printf()函数，strlen.o里面只有strlen()函数。</p>
+<p>​    我们知道，链接器在链接静态链接库的时候是以目标文件为单位的。比如我们引用了静态库中的printf()函数，那么链接器就会把库中包含printf()函数的那个目标文件链接进来，如果很多函数都放在一个目标文件中，很可能很多没用的函数都被一起链接进了输出结果中。由于运行库有成百上千个函数，数量非常庞大，每个函数独立地放在一个目标文件中可以尽量减少空间的浪费，那些没有被用到的目标文件就不要链接到最终的输出文件中。</p>
+<h3 id="3-静态链接的优缺点"><a href="#3-静态链接的优缺点" class="headerlink" title="3.静态链接的优缺点"></a>3.静态链接的优缺点</h3><p>​    静态链接的缺点很明显，一是浪费空间，因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，如多个程序中都调用了printf()函数，则这多个程序中都含有printf.o，所以同一个目标文件都在内存存在多个副本；另一方面就是更新比较困难，因为每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西，在执行的时候运行速度快。</p>
+<p>问题：</p>
+<h3 id="二、动态链接-1-为什么会出现动态链接"><a href="#二、动态链接-1-为什么会出现动态链接" class="headerlink" title="二、动态链接 1.为什么会出现动态链接"></a>二、动态链接 1.为什么会出现动态链接</h3><p>​    动态链接出现的原因就是为了解决静态链接中提到的两个问题，一方面是空间浪费，另外一方面是更新困难。下面介绍一下如何解决这两个问题。</p>
+<h3 id="2-动态链接的原理"><a href="#2-动态链接的原理" class="headerlink" title="2.动态链接的原理"></a>2.动态链接的原理</h3><p>​    动态链接的基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。下面简单介绍动态链接的过程：</p>
+<p>​    假设现在有两个程序program1.o和program2.o，这两者共用同一个库lib.o,假设首先运行程序program1，系统首先加载program1.o，当系统发现program1.o中用到了lib.o，即program1.o依赖于lib.o，那么系统接着加载lib.o，如果program1.o和lib.o还依赖于其他目标文件，则依次全部加载到内存中。当program2运行时，同样的加载program2.o，然后发现program2.o依赖于lib.o，但是此时lib.o已经存在于内存中，这个时候就不再进行重新加载，而是将内存中已经存在的lib.o映射到program2的虚拟地址空间中，从而进行链接（这个链接过程和静态链接类似）形成可执行程序。</p>
+<h3 id="3-动态链接的优缺点"><a href="#3-动态链接的优缺点" class="headerlink" title="3.动态链接的优缺点"></a>3.动态链接的优缺点</h3><p>​    动态链接的优点显而易见，就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多分，副本，而是这多个程序在执行时共享同一份副本；另一个优点是，更新也比较方便，更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。但是动态链接也是有缺点的，因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</p>
+<p>​    据估算，动态链接和静态链接相比，性能损失大约在5%以下。经过实践证明，这点性能损失用来换区程序在空间上的节省和程序构建和升级时的灵活性是值得的。</p>
+<h3 id="4-动态链接地址是如何重定位的呢？"><a href="#4-动态链接地址是如何重定位的呢？" class="headerlink" title="4.动态链接地址是如何重定位的呢？"></a>4.动态链接地址是如何重定位的呢？</h3><p>​    前面我们讲过静态链接时地址的重定位，那我们现在就在想动态链接的地址又是如何重定位的呢？虽然动态链接把链接过程推迟到了程序运行时，但是在形成可执行文件时（注意形成可执行文件和执行程序是两个概念），还是需要用到动态链接库。比如我们在形成可执行程序时，发现引用了一个外部的函数，此时会检查动态链接库，发现这个函数名是一个动态链接符号，此时可执行程序就不对这个符号进行重定位，而把这个过程留到装载时再进行。</p>
 
             </div>
             <hr/>
@@ -511,7 +491,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">网上摘录</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -521,7 +501,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/06/c++%E5%A4%B4%E6%96%87%E4%BB%B6%20head%20file/">http://yoursite.com/2020/08/06/c++%E5%A4%B4%E6%96%87%E4%BB%B6%20head%20file/</a>
+                    <a href="http://yoursite.com/2020/08/11/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">http://yoursite.com/2020/08/11/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,7 +514,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">John Doe</a>
+                    <a href="/about" target="_blank">网上摘录</a>
                     !
                 </span>
             </div>
@@ -724,9 +704,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2020/08/11/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">
                     <div class="card-image">
@@ -744,9 +725,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -755,6 +736,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -765,22 +747,23 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
+                <a href="/2020/08/06/c++%E5%A4%B4%E6%96%87%E4%BB%B6%20head%20file/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++ Compile and Linking">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="c++学习">
                         
-                        <span class="card-title">c++ Compile and Linking</span>
+                        <span class="card-title">c++学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            c++编译过程compile预处理-编译成机械码
-将文本转换成二进制文件
-需要有一个存储区来存储全局和静态变量
-项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互in
+                            c++头文件 head file函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。
+预处理# 符号两种头文件保护方式 
+
+#pragma once  
+#ifn
                         
                     </div>
                     <div class="publish-info">

@@ -459,7 +459,80 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="计数二进制子串"><a href="#计数二进制子串" class="headerlink" title="计数二进制子串"></a>计数二进制子串</h4><p>给定一个字符串 s，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。</p>
+<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="DFS-amp-BFS"><a href="#DFS-amp-BFS" class="headerlink" title="DFS &amp; BFS"></a>DFS &amp; BFS</h3><h4 id="leetcode-133-克隆图"><a href="#leetcode-133-克隆图" class="headerlink" title="leetcode 133 克隆图"></a>leetcode 133 克隆图</h4><p>给你无向 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BF%9E%E9%80%9A%E5%9B%BE/6460995?fr=aladdin">连通</a></strong> 图中一个节点的引用，请你返回该图的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B7%B1%E6%8B%B7%E8%B4%9D/22785317?fr=aladdin"><strong>深拷贝</strong></a>（克隆）。</p>
+<p>通过哈希表来完成图的遍历，然后在哈希表中加入图的每个节点的克隆节点</p>
+<h6 id="dfs-通过递归来遍历"><a href="#dfs-通过递归来遍历" class="headerlink" title="dfs 通过递归来遍历"></a>dfs 通过递归来遍历</h6><pre><code>// //dfs
+// unordered_map&lt;Node*,Node*&gt; visited;
+// Node* cloneGraph(Node* node) &#123;
+//     if(node==nullptr) return nullptr;
+//     //如果已经访问过了  就返回已经克隆的节点
+//     if(visited.find(node)!=visited.end()) return visited[node];
+//     //如果没有克隆过
+//     Node* clone = new Node(node-&gt;val);
+//     //放入hash表中
+//     visited[node] = clone;
+//     // 遍历该节点的邻居并更新克隆节点的邻居列表
+//     for (auto&amp; neighbor: node-&gt;neighbors) &#123;
+//         clone-&gt;neighbors.emplace_back(cloneGraph(neighbor));
+//     &#125;
+//     return clone;
+// &#125;</code></pre>
+<h6 id="bfs-利用队列来进行遍历"><a href="#bfs-利用队列来进行遍历" class="headerlink" title="bfs 利用队列来进行遍历"></a>bfs 利用队列来进行遍历</h6><pre><code>Node* cloneGraph(Node* node) &#123;
+    if(node==nullptr) return node;
+    unordered_map&lt;Node*,Node*&gt; visited;
+    queue&lt;Node*&gt; que;
+    que.push(node);
+    visited[node] = new Node(node-&gt;val);
+    while(!que.empty())
+    &#123;
+        auto cur = que.front();
+        que.pop();
+
+        for(auto&amp; e:cur-&gt;neighbors)
+        &#123;
+            //如果没有访问过该节点
+            if(visited.find(e)==visited.end())
+            &#123;
+                Node* neigh = new Node(e-&gt;val);
+                visited[e] = neigh;
+                que.push(e);
+            &#125;
+            visited[cur]-&gt;neighbors.emplace_back(visited[e]);
+        &#125;
+    &#125;
+    return visited[node];
+&#125;</code></pre>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="leetcode43-字符串相乘"><a href="#leetcode43-字符串相乘" class="headerlink" title="leetcode43 字符串相乘"></a>leetcode43 字符串相乘</h4><p>给定两个以字符串形式表示的非负整数 <code>num1</code> 和 <code>num2</code>，返回 <code>num1</code> 和 <code>num2</code> 的乘积，它们的乘积也表示为字符串形式。<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/multiply-strings/">https://leetcode-cn.com/problems/multiply-strings/</a></p>
+<p>思路 ：<strong>两个字符串每个字符进行逐个相乘存放在一个m+n的数组中，每次的乘积对应的低位在 i+j+1上，高位在i+j上，低位除余，高位+=低位/10</strong></p>
+<p>num1的第i位(高位从0开始)和num2的第j位相乘的结果在乘积中的位置是[i+j, i+j+1]<br> 例: 123 * 45,  123的第1位 2 和45的第0位 4 乘积 08 存放在结果的第[1, 2]位中</p>
+<pre><code>string multiply(string num1, string num2) &#123;
+    if (num1 == &quot;0&quot; || num2 == &quot;0&quot;) &#123;
+        return &quot;0&quot;;
+    &#125;
+    int m = num1.size(), n = num2.size();
+    auto ansArr = vector&lt;int&gt;(m + n,0);
+    for (int i = m - 1; i &gt;= 0; i--) &#123;
+        for (int j = n - 1; j &gt;= 0; j--) &#123;
+            int x = num1.at(i) - &#39;0&#39;;
+            int y = num2.at(j) - &#39;0&#39;;
+            int mul = ansArr[i+j+1]+x*y;   //加上低位
+            ansArr[i+j] += mul/10;   //高位进位
+            ansArr[i+j+1]  = mul%10;   //低位除余
+        &#125;
+    &#125;
+    int index=0;
+    string str;
+    while(index&lt;ansArr.size()&amp;&amp;ansArr[index]==0)
+    &#123;
+        index++;
+    &#125;
+    for(;index&lt;ansArr.size();++index)
+    &#123;
+        str.push_back(ansArr[index]+&#39;0&#39;);
+    &#125;
+    return str;
+&#125;</code></pre>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="计数二进制子串"><a href="#计数二进制子串" class="headerlink" title="计数二进制子串"></a>计数二进制子串</h4><p>给定一个字符串 s，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。</p>
 <p>重复出现的子串要计算它们出现的次数。</p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810121217475.png" alt="image-20200810121217475"></p>
 <p>用last来记录之前一个数字的个数，cur来记录当前数字的个数，然后当last&gt;=cur 的时候，ans就++，因为这是肯定是有一个0和1相等的子字符串；</p>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="c++学习, Hexo">
+    <meta name="keywords" content="数据库学习, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>c++学习 | Hexo</title>
+    <title>数据库学习 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">c++学习</h1>
+                    <h1 class="description center-align post-title">数据库学习</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-06
+                    2020-08-21
                 </div>
                 
 
@@ -458,44 +458,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="c-头文件-head-file"><a href="#c-头文件-head-file" class="headerlink" title="c++头文件 head file"></a>c++头文件 head file</h4><p>函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。</p>
-<h5 id="预处理-符号"><a href="#预处理-符号" class="headerlink" title="预处理# 符号"></a>预处理# 符号</h5><p>两种头文件保护方式 </p>
-<ul>
-<li>#pragma once  </li>
-<li>#ifndef #define #endif</li>
-</ul>
-<p>#include 引号和尖括号</p>
-<p>方括号只用于编译器的include路径，引号用于所有，引号会从当前相对位置开始寻找，在从include路径寻找</p>
-<h5 id="指针-pointer"><a href="#指针-pointer" class="headerlink" title="指针 pointer"></a>指针 pointer</h5><p>指针就是一个内存地址，一个包含地址的变量、整形变量。</p>
-<p>引用</p>
-<p>对某个已存在的变量的引用，与指针不同，必须引用一个已经存在的变量</p>
-<h5 id="class-和-struct-的区别"><a href="#class-和-struct-的区别" class="headerlink" title="class 和 struct 的区别"></a>class 和 struct 的区别</h5><p>主要是里面的元素的访问修饰符的区别</p>
-<p>class主要作为对象的实现</p>
-<p>struct主要用于数据结构的实现 </p>
-<h5 id="static静态变量-存放在静态存储区"><a href="#static静态变量-存放在静态存储区" class="headerlink" title="static静态变量   存放在静态存储区"></a>static静态变量   存放在静态存储区</h5><p>全局static 只属于这个cpp文件，其它cpp不可访问</p>
-<p>class static 属于这个类</p>
-<p>静态局部变量的用法  local static </p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200807212959984.png" alt="image-20200807212959984"></p>
-<h5 id="c-虚函数"><a href="#c-虚函数" class="headerlink" title="c++虚函数"></a>c++虚函数</h5><p>1、多态（polymorphism），即基类指针或者引用，可能指向基类对象，也可能指向派生类对象，会根据运行时具体指向的对象，来调用不同的函数。</p>
-<p>2、如果没有多态，则什么类型的指针或者引用，就会调用什么类型的对象的函数。</p>
-<p>3、每个包含虚函数的类（也叫虚类），都有一个虚函数表（简称虚表），表项是一个虚函数的地址。</p>
-<p>4、如果基类是虚类，则继承类也是虚类。</p>
-<p>5、虚类的对象最前面都是一个虚表指针，指向类的虚表。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810142956592.png" alt="image-20200810142956592"></p>
-<p>虚函数表包含基类中所有虚函数的映射</p>
-<p>首先 需要额外的内存才能将信息存储到虚函数表中，该函数包含实际基类中指向虚函数表的成员指针</p>
-<p>其次，每当我们调用虚函数时，需要遍历虚函数表以查看该映射哪个函数。</p>
-<h5 id="c-接口"><a href="#c-接口" class="headerlink" title="c++接口"></a>c++接口</h5><p>pure virtual function（纯虚函数） virtual return function() =0  相当于接口</p>
-<p>必须由子类来实现  接口。</p>
-<p>这样做的好处是 所有的子类都会实现该方法。 保证了多态。</p>
-<h5 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html">https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html</a></p>
-<p>抽象类要被子类继承，接口要被类实现。</p>
-<p>接口只能做方法声明，抽象类中可以作方法声明，也可以做方法实现。</p>
-<p>接口里定义的变量只能是公共的静态的常量，抽象类中的变量是普通变量。</p>
-<p>接口是设计的结果，抽象类是重构的结果。</p>
-<p>抽象类和接口都是用来抽象具体对象的，但是接口的抽象级别最高。</p>
-<p>抽象类可以有具体的方法和属性，接口只能有抽象方法和不可变常量。</p>
-<p>抽象类主要用来抽象类别，接口主要用来抽象功能。</p>
+                <h2 id="⑴-原子性（Atomicity）"><a href="#⑴-原子性（Atomicity）" class="headerlink" title="⑴ 原子性（Atomicity）"></a>⑴ 原子性（Atomicity）</h2><p>　　原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，这和前面两篇博客介绍事务的功能是一样的概念，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
+<h2 id="⑵-一致性（Consistency）"><a href="#⑵-一致性（Consistency）" class="headerlink" title="⑵ 一致性（Consistency）"></a>⑵ 一致性（Consistency）</h2><p>　　一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。</p>
+<p>　　拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。</p>
+<h2 id="⑶-隔离性（Isolation）"><a href="#⑶-隔离性（Isolation）" class="headerlink" title="⑶ 隔离性（Isolation）"></a>⑶ 隔离性（Isolation）</h2><p>　　隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
+<p>　　即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。</p>
+<p>　　关于事务的隔离性数据库提供了多种隔离级别，稍后会介绍到。</p>
+<h2 id="⑷-持久性（Durability）"><a href="#⑷-持久性（Durability）" class="headerlink" title="⑷ 持久性（Durability）"></a>⑷ 持久性（Durability）</h2><p>　　持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
+<p>　　例如我们在使用JDBC操作数据库时，在提交事务方法后，提示用户事务操作完成，当我们程序执行完成直到看到提示后，就可以认定事务以及正确提交，即使这时候数据库出现了问题，也必须要将我们的事务完全执行完成，否则就会造成我们看到提示事务处理完毕，但是数据库因为故障而没有执行事务的重大错误。</p>
+<p>以上介绍完事务的四大特性(简称ACID)，现在重点来说明下事务的隔离性，当多个线程都开启事务操作数据库中的数据时，数据库系统要能进行隔离操作，以保证各个线程获取数据的准确性，在介绍数据库提供的各种隔离级别之前，我们先看看如果不考虑事务的隔离性，会发生的几种问题：</p>
+<h2 id="1，脏读"><a href="#1，脏读" class="headerlink" title="1，脏读"></a>1，脏读</h2><p>　　脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。</p>
+<p>　　当一个事务正在多次修改某个数据，而在这个事务中这多次的修改都还未提交，这时一个并发的事务来访问该数据，就会造成两个事务得到的数据不一致。例如：用户A向用户B转账100元，对应SQL命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update account set money&#x3D;money+100 where name&#x3D;’B’;  (此时A通知B)</span><br><span class="line"></span><br><span class="line">update account set money&#x3D;money - 100 where name&#x3D;’A’;</span><br></pre></td></tr></table></figure>
+
+<p>　　当只执行第一条SQL时，A通知B查看账户，B发现确实钱已到账（此时即发生了脏读），而之后无论第二条SQL是否执行，只要该事务不提交，则所有操作都将回滚，那么当B以后再次查看账户时就会发现钱其实并没有转。</p>
+<h2 id="2，不可重复读"><a href="#2，不可重复读" class="headerlink" title="2，不可重复读"></a>2，不可重复读</h2><p>　　不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</p>
+<p>　　例如事务T1在读取某一数据，而事务T2立马修改了这个数据并且提交事务给数据库，事务T1再次读取该数据就得到了不同的结果，发送了不可重复读。</p>
+<p>　　不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。</p>
+<p>　　在某些情况下，不可重复读并不是问题，比如我们多次查询某个数据当然以最后查询得到的结果为主。但在另一些情况下就有可能发生问题，例如对于同一个数据A和B依次查询就可能不同，A和B就可能打起来了……</p>
+<h2 id="3，虚读-幻读"><a href="#3，虚读-幻读" class="headerlink" title="3，虚读(幻读)"></a>3，虚读(幻读)</h2><p>　　幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。</p>
+<p>　　幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）。</p>
+<p>　　现在来看看MySQL数据库为我们提供的四种隔离级别：</p>
+<p>　　① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</p>
+<p>　　② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</p>
+<p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
+<p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</p>
 
             </div>
             <hr/>
@@ -511,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">zsw</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -521,7 +508,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/06/c++%E5%A4%B4%E6%96%87%E4%BB%B6%20head%20file/">http://yoursite.com/2020/08/06/c++%E5%A4%B4%E6%96%87%E4%BB%B6%20head%20file/</a>
+                    <a href="http://yoursite.com/2020/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">http://yoursite.com/2020/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,7 +521,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">John Doe</a>
+                    <a href="/about" target="_blank">zsw</a>
                     !
                 </span>
             </div>
@@ -724,37 +711,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/08/11/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">
+                <a href="/2020/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="静态链接和动态链接">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="数据库学习">
                         
-                        <span class="card-title">静态链接和动态链接</span>
+                        <span class="card-title">数据库学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            作为一名C/C++程序员，对于编译链接的过程要了然于胸。首先大概介绍一下，编译分为3步，首先对源文件进行预处理，这个过程主要是处理一些#号定义的命令或语句（如宏、#include、预编译指令#ifdef等），生成*.i文件；然后进行编译，这
+                            ⑴ 原子性（Atomicity）　　原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，这和前面两篇博客介绍事务的功能是一样的概念，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。
+⑵ 一致性（
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            网上摘录
+                            zsw
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -765,32 +755,33 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
+                <a href="/2020/08/20/Unity%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++ Compile and Linking">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Unity学习">
                         
-                        <span class="card-title">c++ Compile and Linking</span>
+                        <span class="card-title">Unity学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            c++编译过程compile预处理-编译成机械码
-将文本转换成二进制文件
-需要有一个存储区来存储全局和静态变量
-项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互in
+                            协程协程是串行的
+线程可以拥有多个协程，协程自己进行切换，也有自己的上下文，相对独立
+Unity协程原理
+1分帧  将yieldreturn 分割的语分配到每一帧去执行，根据yield return后面的枚举类型逐个遍历返回类型
+一般在  
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            zsw
                             
                         </span>
                     </div>

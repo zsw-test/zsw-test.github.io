@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构, Hexo">
+    <meta name="keywords" content="c++学习, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构 | Hexo</title>
+    <title>c++学习 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构</h1>
+                    <h1 class="description center-align post-title">c++学习</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-12
+                    2020-08-06
                 </div>
                 
 
@@ -458,92 +458,51 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[toc]</p>
-<h2 id="哈希表（散列表）"><a href="#哈希表（散列表）" class="headerlink" title="哈希表（散列表）"></a>哈希表（散列表）</h2><h3 id="解决哈希冲突"><a href="#解决哈希冲突" class="headerlink" title="解决哈希冲突"></a>解决哈希冲突</h3><p>1、链地址法（拉链法）：使用链表</p>
-<p>2、开放定址法：线性探测、二次探测、随机探测</p>
-<p>3、在哈希法：发生冲突时，使用另一个哈希函数</p>
-<p>4、建立一个公共溢出区</p>
-<h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><h4 id="一，AVL树（平衡二叉树）"><a href="#一，AVL树（平衡二叉树）" class="headerlink" title="一，AVL树（平衡二叉树）"></a>一，AVL树（平衡二叉树）</h4><p><strong>（1）简介</strong></p>
-<p>AVL树是带有平衡条件的二叉查找树，一般是用平衡因子差值 判断是否平衡并通过旋转来实现平衡，左右字数高度差不超过1，和红黑树相比，AVL树是<strong>严格的平衡二叉树</strong>，平衡条件必须满足（<strong>所有节点的左右子树高度差不超过1</strong>）。不管我们是执行插入还是删除操作，只要不满足上面的条件，就要用旋转来保持平衡，而旋转是非常耗时的，由此我们可以知道<strong>AVL树适合用于插入与删除次数比较少，但查找比较多的情况</strong>。</p>
-<p><strong>（2）局限性</strong></p>
-<p>由于维护这种高度平衡所付出的代价比从中获取的效率收益还大，实际的应用不多，更多的地方是追求局部而不是非常整体平衡的红黑树。当然，<strong>如果应用场景中对插入删除不频繁，只是对查找要求较高，那么AVL还是较优于红黑树的</strong>。</p>
-<p><strong>（3）应用</strong></p>
-<p>1，Windows NT内核中广泛存在;</p>
-<h4 id="二、红黑树"><a href="#二、红黑树" class="headerlink" title="二、红黑树"></a>二、红黑树</h4><p><strong>（1）简介</strong></p>
-<p>一种二叉查找树，但在每个节点增加一个存储位表示节点的颜色，可以是红或黑。通过对任何一条从根到叶子的路径上各个节点着色的方式的限制，<strong>红黑树确保没有一条路径会比其他路径长出两倍</strong>，因此，红黑树是一种弱平衡二叉树（由于是弱平衡，可以看出，在相同节点的情况下，AVL树的高度低于红黑树），相对于要求严格的AVL树来说，它的旋转次数少，所以<strong>对于搜索、插入、删除操作比较多的情况下，我们就用红黑树</strong>。</p>
-<p><strong>（2）性质</strong></p>
-<ol>
-<li><p>每个节点非红即黑</p>
-</li>
-<li><p>根节点是黑的;</p>
-</li>
-<li><p>每个叶节点（叶节点即树尾端NULL指针或NULL节点）都是黑的;</p>
-</li>
-<li><p>如图所示，如果一个节点是红的，那么它的两儿子都是黑的;</p>
-</li>
-<li><p>对于任意节点而言，其到叶子点树NULL指针的每条路径都包含相同数目的黑节点;</p>
-</li>
-<li><p>每条路径都包含相同的黑节点;</p>
-</li>
-</ol>
-<p><strong>（3）应用</strong></p>
-<p>1，广泛用于C ++的STL中，地图和集都是用红黑树实现的;</p>
-<p>2，着名的Linux的的进程调度完全公平调度程序，用红黑树管理进程控制块，进程的虚拟内存区域都存储在一颗红黑树上，每个虚拟地址区域都对应红黑树的一个节点，左指针指向相邻的地址虚拟存储区域，右指针指向相邻的高地址虚拟地址空间;</p>
-<p>3，IO多路复用的epoll的的的实现采用红黑树组织管理的的的sockfd，以支持快速的增删改查;</p>
-<p>4，Nginx的的的中用红黑树管理定时器，因为红黑树是有序的，可以很快的得到距离当前最小的定时器;</p>
-<p>5，Java的的的中TreeMap中的中的实现;</p>
-<h3 id="多路平衡查找树"><a href="#多路平衡查找树" class="headerlink" title="多路平衡查找树"></a>多路平衡查找树</h3><h4 id="B树概念"><a href="#B树概念" class="headerlink" title="B树概念"></a>B树概念</h4><p>B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。</p>
+                <h4 id="c-头文件-head-file"><a href="#c-头文件-head-file" class="headerlink" title="c++头文件 head file"></a>c++头文件 head file</h4><p>函数声明和定义，函数的声明一般放在headfile中，然后在用的时候include头文件，函数只能定义一次，一般放在cpp文件中。</p>
+<h5 id="预处理-符号"><a href="#预处理-符号" class="headerlink" title="预处理# 符号"></a>预处理# 符号</h5><p>两种头文件保护方式 </p>
 <ul>
-<li>每个节点最多有m-1个<strong>关键字</strong>（可以存有的键值对）。</li>
-<li>根节点最少可以只有1个<strong>关键字</strong>。</li>
-<li>非根节点至少有m/2个<strong>关键字</strong>。</li>
-<li>每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有关键字都小于它，而右子树中的所有关键字都大于它。</li>
-<li>所有叶子节点都位于同一层，或者说根节点到每个叶子节点的长度都相同。</li>
-<li>每个节点都存有索引和数据，也就是对应的key和value。</li>
+<li>#pragma once  </li>
+<li>#ifndef #define #endif</li>
 </ul>
-<h4 id="B-树概述"><a href="#B-树概述" class="headerlink" title="B+树概述"></a>B+树概述</h4><p>B+树其实和B树是非常相似的，我们首先看看<strong>相同点</strong>。</p>
-<ul>
-<li>根节点至少一个元素</li>
-<li>非根节点元素范围：m/2 &lt;= k &lt;= m-1</li>
-</ul>
-<p><strong>不同点</strong>。</p>
-<ul>
-<li>B+树有两种类型的节点：内部结点（也称索引结点）和叶子结点。内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存储在叶子节点。</li>
-<li>内部结点中的key都按照从小到大的顺序排列，对于内部结点中的一个key，左树中的所有key都小于它，右子树中的key都大于等于它。叶子结点中的记录也按照key的大小排列。</li>
-<li>每个叶子结点都存有相邻叶子结点的指针，叶子结点本身依关键字的大小自小而大顺序链接。</li>
-<li>父节点存有右孩子的第一个元素的索引。</li>
-</ul>
-<h3 id="B树和B-树总结"><a href="#B树和B-树总结" class="headerlink" title="B树和B+树总结"></a>B树和B+树总结</h3><p>B+树相对于B树有一些自己的优势，可以归结为下面几点。</p>
-<ul>
-<li>单一节点存储的元素更多，使得查询的IO次数更少，所以也就使得它更适合做为数据库MySQL的底层数据结构了。</li>
-<li>所有的查询都要查找到叶子节点，查询性能是稳定的，而B树，每个节点都可以查找到数据，所以不稳定。</li>
-<li>所有的叶子节点形成了一个有序链表，更加便于查找。</li>
-</ul>
-<h4 id="聚集索引和非聚集索引区别"><a href="#聚集索引和非聚集索引区别" class="headerlink" title="聚集索引和非聚集索引区别"></a>聚集索引和非聚集索引区别</h4><p>聚集索引一个表只能有一个，而非聚集索引一个表可以存在多个</p>
-<p>聚集索引存储记录在物理上连续存在，而非聚集索引是逻辑上的连续，物理存储并不连续</p>
-<p>聚集索引：物理存储按照索引排序，聚集索引是一种索引组织形式，索引的键值逻辑顺序决定了表数据行的物理存储顺序</p>
-<p>非聚集索引：物理存储不按照索引顺序；非聚集索引就是普通索引了，仅仅是对数据列创建相应的索引，不影响整个表的物理存储顺序</p>
-<p>索引是通过二叉树的数据结构来描述的，我们可以这么理解聚簇索引：索引的叶节点就是数据节点。而非聚簇索引的叶节点仍然是索引节点，只不过有一个指针指向对应的数据块。</p>
-<h2 id="MySQL索引实现"><a href="#MySQL索引实现" class="headerlink" title="MySQL索引实现"></a>MySQL索引实现</h2><p>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎的索引实现方式。</p>
-<h3 id="MyISAM索引实现"><a href="#MyISAM索引实现" class="headerlink" title="MyISAM索引实现"></a>MyISAM索引实现</h3><p>MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数据记录的地址。下图是MyISAM索引的原理图：</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/8.png" alt="img"></p>
-<p>图8</p>
-<p>这里设表一共有三列，假设我们以Col1为主键，则图8是一个MyISAM表的主索引（Primary key）示意。可以看出MyISAM的索引文件仅仅保存数据记录的地址。在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。如果我们在Col2上建立一个辅助索引，则此索引的结构如下图所示：</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/8.png" alt="img"></p>
-<p>图9</p>
-<p>同样也是一颗B+Tree，data域保存数据记录的地址。因此，MyISAM中索引检索的算法为首先按照B+Tree搜索算法搜索索引，如果指定的Key存在，则取出其data域的值，然后以data域的值为地址，读取相应数据记录。</p>
-<p>MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。</p>
-<h3 id="InnoDB索引实现"><a href="#InnoDB索引实现" class="headerlink" title="InnoDB索引实现"></a>InnoDB索引实现</h3><p>虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。</p>
-<p>第一个重大区别是InnoDB的数据文件本身就是索引文件。从上文知道，MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的叶节点data域保存了完整的数据记录。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/8.png" alt="img"></p>
-<p>图10</p>
-<p>图10是InnoDB主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形。</p>
-<p>第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域。例如，图11为定义在Col3上的一个辅助索引：</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/8.png" alt="img"></p>
-<p>图11</p>
-<p>这里以英文字符的ASCII码作为比较准则。聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</p>
-<p>了解不同存储引擎的索引实现方式对于正确使用和优化索引都非常有帮助，例如知道了InnoDB的索引实现后，就很容易明白为什么<strong>不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大</strong>。再例如，用非单调的字段作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，<strong>非单调的主键会造成在插入新记录时数据文件为了维持B+Tree的特性而频繁的分裂调整，十分低效，而使用自增字段作为主键则是一个很好的选择</strong>。</p>
-<h2 id="索引使用策略及优化"><a href="#索引使用策略及优化" class="headerlink" title="索引使用策略及优化"></a>索引使用策略及优化</h2>
+<p>#include 引号和尖括号</p>
+<p>方括号只用于编译器的include路径，引号用于所有，引号会从当前相对位置开始寻找，在从include路径寻找</p>
+<h5 id="指针-pointer"><a href="#指针-pointer" class="headerlink" title="指针 pointer"></a>指针 pointer</h5><p>指针就是一个内存地址，一个包含地址的变量、整形变量。</p>
+<p>引用</p>
+<p>对某个已存在的变量的引用，与指针不同，必须引用一个已经存在的变量</p>
+<h5 id="class-和-struct-的区别"><a href="#class-和-struct-的区别" class="headerlink" title="class 和 struct 的区别"></a>class 和 struct 的区别</h5><p>主要是里面的元素的访问修饰符的区别</p>
+<p>class主要作为对象的实现</p>
+<p>struct主要用于数据结构的实现 </p>
+<h5 id="static静态变量-存放在静态存储区"><a href="#static静态变量-存放在静态存储区" class="headerlink" title="static静态变量   存放在静态存储区"></a>static静态变量   存放在静态存储区</h5><p>全局static 只属于这个cpp文件，其它cpp不可访问</p>
+<p>class static 属于这个类</p>
+<p>静态局部变量的用法  local static </p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200807212959984.png" alt="image-20200807212959984"></p>
+<h5 id="c-虚函数"><a href="#c-虚函数" class="headerlink" title="c++虚函数"></a>c++虚函数</h5><p>1、多态（polymorphism），即基类指针或者引用，可能指向基类对象，也可能指向派生类对象，会根据运行时具体指向的对象，来调用不同的函数。</p>
+<p>2、如果没有多态，则什么类型的指针或者引用，就会调用什么类型的对象的函数。</p>
+<p>3、每个包含虚函数的类（也叫虚类），都有一个虚函数表（简称虚表），表项是一个虚函数的地址。</p>
+<p>4、如果基类是虚类，则继承类也是虚类。</p>
+<p>5、虚类的对象最前面都是一个虚表指针，指向类的虚表。</p>
+<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200810142956592.png" alt="image-20200810142956592"></p>
+<p>虚函数表包含基类中所有虚函数的映射</p>
+<p><strong>对象的虚表指针用来指向自己所属类的虚表，虚表中的指针会指向其继承的最近的一个类的虚函数</strong></p>
+<p>首先 需要额外的内存才能将信息存储到虚函数表中，该函数包含实际基类中指向虚函数表的成员指针</p>
+<p>其次，每当我们调用虚函数时，需要遍历虚函数表以查看该映射哪个函数。</p>
+<h5 id="c-接口"><a href="#c-接口" class="headerlink" title="c++接口"></a>c++接口</h5><p>pure virtual function（纯虚函数） virtual return function() =0  相当于接口</p>
+<p>必须由子类来实现  接口。</p>
+<p>这样做的好处是 所有的子类都会实现该方法。 保证了多态。</p>
+<h5 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html">https://jingyan.baidu.com/article/ceb9fb10703f7f8cac2ba05e.html</a></p>
+<p>抽象类要被子类继承，接口要被类实现。</p>
+<p>接口只能做方法声明，抽象类中可以作方法声明，也可以做方法实现。</p>
+<p>接口里定义的变量只能是公共的静态的常量，抽象类中的变量是普通变量。</p>
+<p>接口是设计的结果，抽象类是重构的结果。</p>
+<p>抽象类和接口都是用来抽象具体对象的，但是接口的抽象级别最高。</p>
+<p>抽象类可以有具体的方法和属性，接口只能有抽象方法和不可变常量。</p>
+<p>抽象类主要用来抽象类别，接口主要用来抽象功能。</p>
+<p><strong>指针和引用的区别</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/l477918269/article/details/90233908">https://blog.csdn.net/l477918269/article/details/90233908</a></p>
+<p>引用是别名、指针是地址</p>
+<p>指针可以重新赋值，指向另一个地址，但是引用就是别名，与某个对象绑定之后，不能改变。</p>
+<p>程序需要为指针变量分配内存，不需要为引用分配内存、因为它就是一个别名，引用不能为空。</p>
+
             </div>
             <hr/>
 
@@ -558,7 +517,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">zsw</a>
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -568,7 +527,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">http://yoursite.com/2020/08/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</a>
+                    <a href="http://yoursite.com/2020/08/06/c++%E5%AD%A6%E4%B9%A0/">http://yoursite.com/2020/08/06/c++%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,7 +540,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">zsw</a>
+                    <a href="/about" target="_blank">John Doe</a>
                     !
                 </span>
             </div>
@@ -775,47 +734,6 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/20/Unity%E5%AD%A6%E4%B9%A0/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Unity学习">
-                        
-                        <span class="card-title">Unity学习</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            协程协程是串行的
-线程可以拥有多个协程，协程自己进行切换，也有自己的上下文，相对独立
-Unity协程原理
-1分帧  将yieldreturn 分割的语分配到每一帧去执行，根据yield return后面的枚举类型逐个遍历返回类型
-一般在  
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-20
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            zsw
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2020/08/11/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">
                     <div class="card-image">
                         
@@ -832,13 +750,53 @@ Unity协程原理
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
                             网上摘录
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++ Compile and Linking">
+                        
+                        <span class="card-title">c++ Compile and Linking</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            c++编译过程compile预处理-编译成机械码
+将文本转换成二进制文件
+需要有一个存储区来存储全局和静态变量
+项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互in
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
                             
                         </span>
                     </div>

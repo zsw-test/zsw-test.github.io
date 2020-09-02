@@ -613,7 +613,79 @@ return true;  //如果遍历了每个皇后放的位置都不产生冲突的话 
     &#125;
     return res;
 &#125;</code></pre>
-<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h4><p>二叉搜索树中的两个节点被错误地交换。</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="二叉树的最近公共祖先"><a href="#二叉树的最近公共祖先" class="headerlink" title="二叉树的最近公共祖先"></a>二叉树的最近公共祖先</h4><pre><code>//寻找二叉树节点的最近公共祖先
+//二叉搜索树
+class Solution &#123;
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;
+        if(root == NULL)
+            return NULL;
+        if(root-&gt;val &gt; p-&gt;val &amp;&amp; root-&gt;val &gt; q-&gt;val)//说明p，q都在左子树
+            return lowestCommonAncestor(root-&gt;left, p, q);
+        else if(root-&gt;val &lt; p-&gt;val &amp;&amp; root-&gt;val &lt; q-&gt;val)//说明p，q都在右子树
+            return lowestCommonAncestor(root-&gt;right, p, q);
+        else//p，q各在一边，说明当前的根就是最近共同祖先
+            return root; 
+
+    &#125;
+&#125;;
+
+//如果是一般的二叉树
+class Solution &#123;
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;
+        if(root == NULL)
+            return NULL;
+        //如果根节点就是p或者q，返回根节点
+        if(root == p || root == q)
+            return root;
+        //分别去左右子树里面找
+        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
+        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
+
+        if(left &amp;&amp; right)//p，q各在一边，说明当前的根就是最近共同祖先 
+            return root;
+        else if(left)//说明p，q都在左子树
+            return left;
+        else if(right)//说明p，q都在右子树
+            return right;
+        else
+            return NULL;
+
+    &#125;
+&#125;;</code></pre>
+<h4 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h4><p>剑指offer 07</p>
+<p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+<pre><code>class Solution &#123;
+public:
+    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;
+        if(preorder.size()==0) return NULL;
+        int index=0;
+        vector&lt;int&gt; pre_left,pre_right,inor_left,inor_right;
+        for(int i=0;i&lt;preorder.size();++i)
+        &#123;
+            if(preorder[0]==inorder[i])
+            &#123;
+                index = i;
+                break;
+            &#125;else
+            &#123;
+                pre_left.push_back(preorder[i+1]);
+                inor_left.push_back(inorder[i]);
+            &#125;
+        &#125;
+        for(int i=index+1;i&lt;preorder.size();++i)
+        &#123;
+            pre_right.push_back(preorder[i]);
+            inor_right.push_back(inorder[i]);
+        &#125;
+        TreeNode *root = new TreeNode(preorder[0]);
+        root-&gt;left = buildTree(pre_left,inor_left);
+        root-&gt;right = buildTree(pre_right,inor_right);
+        return root;
+    &#125;
+&#125;;</code></pre>
+<h4 id="恢复二叉搜索树"><a href="#恢复二叉搜索树" class="headerlink" title="恢复二叉搜索树"></a>恢复二叉搜索树</h4><p>二叉搜索树中的两个节点被错误地交换。</p>
 <p>请在不改变其结构的情况下，恢复这棵树。</p>
 <p>二叉搜索树：左边的节点的值都比当前节点的值小，右边节点的值都比当前节点大</p>
 <p>特性：通过中序遍历每个节点可以得到一个递增的数组</p>

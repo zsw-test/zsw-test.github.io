@@ -489,7 +489,67 @@
     &#125;
     return stk.empty();
 &#125;</code></pre>
-<h3 id="DFS-amp-BFS"><a href="#DFS-amp-BFS" class="headerlink" title="DFS &amp; BFS"></a>DFS &amp; BFS</h3><h5 id="N皇后"><a href="#N皇后" class="headerlink" title="N皇后"></a>N皇后</h5><p>回溯法，根据当前皇后的行数  判断每一个列是否能够放，如果可以放，那么久递归深入，不行的话就回溯搜索兄弟节点</p>
+<h3 id="DFS-amp-BFS"><a href="#DFS-amp-BFS" class="headerlink" title="DFS &amp; BFS"></a>DFS &amp; BFS</h3><h3 id="回朔法"><a href="#回朔法" class="headerlink" title="回朔法"></a>回朔法</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum/">39.组合总和</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum-ii/">40. 组合总和 II</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutations/">46. 全排列</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutations-ii/">47. 全排列 II</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/">78. 子集</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets-ii/">90. 子集 II</a></p>
+<p>这类题目都是同一类型的,用回溯算法!</p>
+<p>其实回溯算法关键在于:不合适就退回上一步</p>
+<p>然后通过约束条件, 减少时间复杂度.</p>
+<h5 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h5><p>给定一个 <strong>没有重复</strong> 数字的序列，返回其所有可能的全排列。</p>
+<p>回溯法，每次扫描一下给定的数字序列看是否已经用了，如果没有用，那么就加入到当前的递归序列中，在递归进去下一个节点，最后退出来扫描兄弟节点，并把当前的使用的数字归位。</p>
+<pre><code>void backtrack(vector&lt;int&gt; &amp;nums,vector&lt;int&gt; cur,int index)
+    &#123;
+        if(index==n)
+        &#123;
+            result.push_back(cur);
+            return;
+        &#125;else
+        &#123;
+            for(int i=0;i&lt;n;++i)
+            &#123;
+                if(vis[i]==0)
+                &#123;
+                    vis[i]= 1;
+                    cur.push_back(nums[i]);
+                    backtrack(nums,cur,index+1);
+                    vis[i] =0;
+                    cur.pop_back();
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    //方法二 直接交换 操作原来的数组 swap放到当前的位置
+    class Solution &#123;
+public:
+    void backtrack(vector&lt;vector&lt;int&gt;&gt;&amp; res, vector&lt;int&gt;&amp; output, int first, int len)&#123;
+        // 所有数都填完了
+        if (first == len) &#123;
+            res.emplace_back(output);
+            return;
+        &#125;
+        for (int i = first; i &lt; len; ++i) &#123;
+            // 动态维护数组
+            swap(output[i], output[first]);
+            // 继续递归填下一个数
+            backtrack(res, output, first + 1, len);
+            // 撤销操作
+            swap(output[i], output[first]);
+        &#125;
+    &#125;
+    vector&lt;vector&lt;int&gt;&gt; permute(vector&lt;int&gt;&amp; nums) &#123;
+        vector&lt;vector&lt;int&gt; &gt; res;
+        backtrack(res, nums, 0, (int)nums.size());
+        return res;
+    &#125;
+&#125;;</code></pre>
+<p><strong>注意去重的问题</strong></p>
+<p>回溯剪枝判断  如果这一个当前准备选择这个位置的数字与前面一个相同（排序了的） 那么如果前面一个数字的vis为true  就可以选择当前这个数字放到当前的位置，否则 那么就是已经回溯完成了的，那么这个数字必定已经被选过了。</p>
+<p> if(i&gt;0&amp;&amp;nums[i]==nums[i-1]&amp;&amp;vis[i-1]==false) continue; //false 说明已经回溯过了 true说明正在回溯</p>
+<h5 id="N皇后"><a href="#N皇后" class="headerlink" title="N皇后"></a>N皇后</h5><p>回溯法，根据当前皇后的行数  判断每一个列是否能够放，如果可以放，那么久递归深入，不行的话就回溯搜索兄弟节点</p>
 <pre><code>bool Place(int t)//判断该行的这个地方能否放置该皇后的位置 
 &#123;
     for(int i=0;i&lt;t;++i)
@@ -816,12 +876,93 @@ public:
 <h4 id="剑指44-数字序列中某一位的数字"><a href="#剑指44-数字序列中某一位的数字" class="headerlink" title="剑指44 数字序列中某一位的数字"></a>剑指44 数字序列中某一位的数字</h4><p>数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。</p>
 <p>请写一个函数，求任意第n位对应的数字。</p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200721123906064.png" alt="image-20200721123906064"></p>
+<h3 id="剑指03-数组中重复的数字"><a href="#剑指03-数组中重复的数字" class="headerlink" title="剑指03 数组中重复的数字"></a>剑指03 数组中重复的数字</h3><p>找出数组中重复的数字。</p>
+<p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
+<pre><code>int findRepeatNumber(vector&lt;int&gt;&amp; nums) &#123;
+       for(int i=0;i&lt;nums.size();i++)&#123;
+           //如果你不在自己的位置上面
+            while(nums[i]!=i)&#123;
+                //如果这个nums[i]位置上的就是nums[i]  说明已经有人了
+                if(nums[nums[i]] == nums[i]) return nums[i];
+                //将这个i位置上的和nums[i]位置上的元素交换 这样nums[i]位置上的元素就是nums[i]了
+                    swap(nums[i],nums[nums[i]]);
+            &#125;
+        &#125;
+        return -1;
+    &#125;</code></pre>
+<h3 id="剑指66-构建乘积数组"><a href="#剑指66-构建乘积数组" class="headerlink" title="剑指66 构建乘积数组"></a>剑指66 构建乘积数组</h3><p>给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中 B 中的元素 B[i]=A[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。</p>
+<pre><code>     vector&lt;int&gt; constructArr(vector&lt;int&gt;&amp; a) &#123;
+        int n = a.size();
+        vector&lt;int&gt; ret(n, 1);
+        int left=1;
+        //计算数组左边的乘积
+        for(int i=0;i&lt;n;++i)
+        &#123;
+            ret[i] = left;
+            left*=a[i];
+        &#125;
+        int right =1;
+          //计算数组右边的乘积
+        for(int i=n-1;i&gt;=0;--i)
+        &#123;
+            ret[i]*=right;
+            right*=a[i];
+        &#125;
+        return ret;
+    &#125;</code></pre>
 <h3 id="剑指45-把数组排成最小的数（自定义排序）"><a href="#剑指45-把数组排成最小的数（自定义排序）" class="headerlink" title="剑指45. 把数组排成最小的数（自定义排序）"></a>剑指45. 把数组排成最小的数（自定义排序）</h3><p>输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。</p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200721133821377.png" alt="image-20200721133821377"></p>
 <h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>剑指offer11 旋转数组的最小值 </p>
 <p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。 </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/">https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/</a></p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200722110440553.png" alt="image-20200722110440553"></p>
+<h4 id="LRUcache实现"><a href="#LRUcache实现" class="headerlink" title="LRUcache实现"></a>LRUcache实现</h4><p>请你为 最不经常使用（LFU）缓存算法设计并实现数据结构。它应该支持以下操作：get 和 put。</p>
+<p>get(key) - 如果键存在于缓存中，则获取键的值（总是正数），否则返回 -1。<br>put(key, value) - 如果键已存在，则变更其值；如果键不存在，请插入键值对。当缓存达到其容量时，则应该在插入新项之前，使最不经常使用的项无效。在此问题中，当存在平局（即两个或更多个键具有相同使用频率）时，应该去除最久未使用的键。<br>「项的使用次数」就是自插入该项以来对其调用 get 和 put 函数的次数之和。使用次数会在对应项被移除后置为 0 。</p>
+<pre><code>class LRUCache &#123;
+public:
+    int cap;
+    list&lt;pair&lt;int,int&gt;&gt; cache;   //使用链表来存放pair对 删除方便 并且容易头尾插入，同时要实现随机访问，所以将迭代器来作为value，通过value来随机访问，并且可以直接通过iterator来直接删除节点
+    unordered_map&lt;int,list&lt;pair&lt;int,int&gt;&gt;::iterator&gt; mp;
+    //hash结构实现o1 速度查找速度
+    LRUCache(int capacity) &#123;
+        this-&gt;cap = capacity;
+    &#125;
+
+    int get(int key) &#123;
+        //如果hash表中没有key 
+        if(!mp.count(key)) return -1;
+        //通过这个节点的iterator找到pair对 并且删除这个节点，同时将这个pair对放到队头。
+        auto it = mp[key];
+        auto node = *it;
+        cache.erase(it);
+        cache.push_front(node);
+        mp[key] = cache.begin();
+        return node.second;
+    &#125;
+
+    void put(int key, int value) &#123;
+        //如果没有get到  那么就不在hash表中
+        if(get(key)==-1)
+        &#123;   
+            //如果到达最大容量了。
+            if(cache.size()==cap)
+            &#123;
+                //将链表尾部的节点删除 同时在hash表中通过删除这个key
+                auto it = cache.back();
+                int endkey = it.first;
+                mp.erase(endkey);
+                cache.pop_back(); 
+            &#125;
+            //插入头节点  同时加入hash表中
+            cache.push_front(pair&lt;int,int&gt;(key,value));
+            mp[key] = cache.begin();
+        &#125;else&#123;
+            //如果get到了 那么这个节点已经被转移到头结点了  只用修改头节点的值就行了
+            auto it = mp[key];
+            it-&gt;second = value;
+        &#125;
+    &#125;
+&#125;;</code></pre>
 
             </div>
             <hr/>
@@ -1054,41 +1195,36 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/01/test/">
+                <a href="/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="c++智能指针">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">c++智能指针</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这一个测试的Blog我用来测试我的文章
+                            c++智能指针shared_ptrmake_shared进行创建对象，
+shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数
 
+不要将智能指针和new一起用，容易出现错误。
+如果使用的智能指针管理的资源你不是new分配的内存，应
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-03
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            zsw
+                            John Doe
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abs/">
-                        <span class="chip bg-color">abs</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1104,9 +1240,9 @@ public:
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="进程的组成">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="操作系统">
                         
-                        <span class="card-title">进程的组成</span>
+                        <span class="card-title">操作系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

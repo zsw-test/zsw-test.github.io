@@ -678,11 +678,10 @@ Unity协程原理
                         <div class="summary block-with-text">
                             
                                 [toc]
-哈希表（散列表）解决哈希冲突1、链地址法（拉链法）：使用链表
-2、开放定址法：线性探测、二次探测、随机探测
-3、在哈希法：发生冲突时，使用另一个哈希函数
-4、建立一个公共溢出区
-二叉搜索树平衡二叉树一，AVL树（平衡二叉树）（1
+堆基于完全二叉树，父节点都大于子节点  所以头节点总是最大的。
+heapify （堆化）使堆的父节点大于（小于）子节点 从上到下
+bulidheap 建堆   从最后一个叶子节点的父节点 从下往上 进行堆化 
+哈希表（散列表）解
                             
                         </div>
                         <div class="publish-info">
@@ -855,50 +854,6 @@ shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2020/08/01/test/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
-                            
-                            <span class="card-title">test</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这一个测试的Blog我用来测试我的文章
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                zsw
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/abs/">
-                            <span class="chip bg-color">abs</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">
                         <div class="card-image">
                             
@@ -941,9 +896,9 @@ shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="进程的组成">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="操作系统">
                             
-                            <span class="card-title">进程的组成</span>
+                            <span class="card-title">操作系统</span>
                         </div>
                     </a>
 
@@ -979,34 +934,49 @@ PCB(进程控制块) 进程的管理者
                 </div>
             </div>
             
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/06/25/TCPIP%E5%8D%8F%E8%AE%AE/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="tcpip协议">
+                            
+                            <span class="card-title">tcpip协议</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                [toc]
+三次握手
+四次挥手
+为什么三次握手
+因为如果是两次的话，第一次发送的SYN连接的请求有可能延迟到达服务器，但是如果达到的时候两端早就已经关闭了，那么服务端还会发送一个SYN ACK到客户端，但是这是客户端已经关闭了，所以服务端就
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                John Doe
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
         </div>
     </article>
 
 </main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 2</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
 
 
 

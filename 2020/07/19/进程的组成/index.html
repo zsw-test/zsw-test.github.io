@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="进程的组成, Hexo">
+    <meta name="keywords" content="操作系统, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>进程的组成 | Hexo</title>
+    <title>操作系统 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">进程的组成</h1>
+                    <h1 class="description center-align post-title">操作系统</h1>
                 </div>
             </div>
         </div>
@@ -527,7 +527,22 @@
 <li><p>多对多：及二者所长</p>
 </li>
 </ul>
-<h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3>
+<h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3><h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h4 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h4><p>单一连续分配</p>
+<p>固定分区分配</p>
+<p>动态分区分配</p>
+<h4 id="非连续分配"><a href="#非连续分配" class="headerlink" title="非连续分配"></a>非连续分配</h4><p>基本分页</p>
+<p>基本分段</p>
+<p>段页式</p>
+<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>基于局部性原理，根据时间局部性，如果访问了某条指令，接下来很可能再次访问。</p>
+<p>空间局部性，如果访问了某个存储单元，接下来其附近的也可能被访问。</p>
+<p>高速缓冲技术的思想</p>
+<p><strong>当程序运行时，将很快会用到的部分装入到内存，将用不到的部分暂时放到外存。</strong></p>
+<p>多次、对换、虚拟</p>
+<p>通过<strong>请求调页</strong>和<strong>页面置换</strong>功能 </p>
+<p><strong>请求调页</strong> 所访问的信息不再内存时，由操作系统将需要的信息调入内存</p>
+<p><strong>页面置换</strong> 将内存中暂时用不到的页面调出外存   如果灭有空闲块，使用<strong>页面置换算法</strong>来淘汰一个页面</p>
+<p>缺页中断机制（内中断）</p>
+
             </div>
             <hr/>
 

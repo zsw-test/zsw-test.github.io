@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="c++智能指针, Hexo">
+    <meta name="keywords" content="linux系统编程笔记, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>c++智能指针 | Hexo</title>
+    <title>linux系统编程笔记 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,7 +313,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">c++智能指针</h1>
+                    <h1 class="description center-align post-title">linux系统编程笔记</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-03
+                    2020-10-11
                 </div>
                 
 
@@ -458,20 +458,137 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="c-智能指针"><a href="#c-智能指针" class="headerlink" title="c++智能指针"></a>c++智能指针</h3><h4 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr<T></T></h4><p>make_shared进行创建对象，</p>
-<p>shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804154501911.png" alt="image-20200804154501911"></p>
-<p>不要将智能指针和new一起用，容易出现错误。</p>
-<p><strong>如果使用的智能指针管理的资源你不是new分配的内存，应该传递一个删除器来管理删除操作</strong></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155256694.png" alt="image-20200804155256694"></p>
-<h4 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr<T></T></h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160241173.png" alt="image-20200804160241173"></p>
-<h4 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr<T></T></h4><p>unique_ptr不支持拷贝和复制，也没有make_shared，某个时刻智能有一个unique_ptr指向一个给定对象，初始化unique_ptr只能使用new直接初始化方式。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155637008.png" alt="image-20200804155637008"></p>
-<p>可以使用release来放弃该对象的操纵权返回一个指针，或者使用reset重置只指向的对象</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160115299.png" alt="image-20200804160115299"></p>
-<h4 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h4><p>弱智能指针 “弱”共享   不改变引用计数  需要由shared_ptr来初始化</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160731597.png" alt="image-20200804160731597"></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804161054150.png" alt="image-20200804161054150"></p>
+                <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="线程概念："><a href="#线程概念：" class="headerlink" title="线程概念："></a>线程概念：</h3><p>进程：有独立的 进程地址空间，有独立的pcb   分配资源的最小单位</p>
+<p>线程：有独立的pcb 没有独立的进程地址空间   最小的执行单位</p>
+<p>ps-Lf 进程id  线程号 lwp cpu 的最小执行单位</p>
+<h3 id="线程共享："><a href="#线程共享：" class="headerlink" title="线程共享："></a>线程共享：</h3><p>独享栈空间 （内核栈、用户栈）</p>
+<p>共享 ./text  ./data  ./rodata ./bss heap   共享全局变量</p>
+<h4 id="线程控制原语："><a href="#线程控制原语：" class="headerlink" title="线程控制原语："></a>线程控制原语：</h4><p><strong>pthread_t pthread_self(void)</strong>  获取线程id 线程id是在进程地址空间内部，用来表示线程身份的id</p>
+<p>返回值：本线程id</p>
+<p>检查出错返回：线程中</p>
+<p>fprintf(stderr, “xxx error: %s\n”, strerror(ret));</p>
+<p><strong>int pthread_create(pthread_t *tid, const pthread_attr_t *attr, void *(*start_rountn)(void *), void *arg);</strong> 创建子线程。</p>
+<p>para1：传出参数，表示新创建的子线程id</p>
+<p>para2：线程数形，传入NULL表示使用默认属性</p>
+<p>para3：子线程回调函数，创建成功时，pthread_create返回时，调用改函数作为一个线程</p>
+<p>para4：线程函数的参数</p>
+<p>创建n个子线程</p>
+<p>for （i = 0； i &lt; 5; i++）</p>
+<p>pthread_create(&amp;tid, NULL, tfn, (void *)i);   // 将 int 类型 i， 强转成 void *， 传参。    </p>
+<p>*<em>void pthread_exit(void <em>retval)</em></em> 退出当前线程</p>
+<p>​    retval：退出值。</p>
+<p>​    exit：退出当前进程</p>
+<p>​    return ： 返回到调用者</p>
+<p>​    pthread_exit： 退出当前线程</p>
+<p><strong>int pthread_join(pthread_t thread, void retval);</strong>    阻塞 回收线程。</p>
+<p>thread: 待回收的线程id</p>
+<p>retval：传出的参数 回收的线程的退出值</p>
+<p><strong>int pthread_detach(pthread_t thread);</strong>  设置线程分离</p>
+<p>thread: 待分离的线程id</p>
+<p><strong>int pthread_cancel(pthread_t thread);</strong>  杀死一个线程  需要达到取消点（需要设置取消点）</p>
+<p>thread:待杀死的线程id</p>
+<p>如果，子线程没有到达取消点， 那么 pthread_cancel 无效。</p>
+<p>我们可以在程序中，手动添加一个取消点。使用 pthread_testcancel();</p>
+<p>成功被 pthread_cancel() 杀死的线程，返回 -1.使用pthead_join 回收。</p>
+<h3 id="线程和进程控制原语对比"><a href="#线程和进程控制原语对比" class="headerlink" title="线程和进程控制原语对比"></a>线程和进程控制原语对比</h3><table>
+<thead>
+<tr>
+<th>线程控制原语</th>
+<th>进程控制原语</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pthread_create()</td>
+<td>fork()</td>
+</tr>
+<tr>
+<td>pthread_self()</td>
+<td>getpid()</td>
+</tr>
+<tr>
+<td>pthread_exit()</td>
+<td>exit()</td>
+</tr>
+<tr>
+<td>pthread_join()</td>
+<td>wait()/waitpid()</td>
+</tr>
+<tr>
+<td>pthread_cancel()</td>
+<td>kill()</td>
+</tr>
+<tr>
+<td>pthread_detach()</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="线程属性："><a href="#线程属性：" class="headerlink" title="线程属性："></a>线程属性：</h4><p>设置分离属性。</p>
+<p>pthread_attr_t attr      创建一个线程属性结构体变量</p>
+<p>pthread_attr_init(&amp;attr);    初始化线程属性</p>
+<p>pthread_attr_setdetachstate(&amp;attr,  PTHREAD_CREATE_DETACHED);        设置线程属性为 分离态</p>
+<p>pthread_create(&amp;tid, &amp;attr, tfn, NULL); 借助修改后的 设置线程属性 创建为分离态的新线程</p>
+<p>pthread_attr_destroy(&amp;attr);    销毁线程属性</p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>协同步调，对公共区域数据按照顺序访问。防止数据混乱，产生与时间有关的错误</p>
+<p>锁的使用：</p>
+<p>​    建议锁！对公共数据进行保护。所有线程【应该】在访问公共数据前先拿锁再访问。但，锁本身不具备强制性。</p>
+<h3 id="使用mutex（互斥锁）锁"><a href="#使用mutex（互斥锁）锁" class="headerlink" title="使用mutex（互斥锁）锁"></a>使用mutex（互斥锁）锁</h3><p><strong>pthread_mutex_t 类型</strong> </p>
+<p><strong>1.pthread_mutex_t lock 创建锁</strong></p>
+<p><strong>2.pthread_mutex_init 初始化锁</strong></p>
+<p><strong>3.pthread_mutex_lock 上锁       1–  -&gt;0</strong></p>
+<p><strong>4.访问共享数据</strong></p>
+<p><strong>5.pthread_mutex_unlock() 解锁   0++  -&gt;1</strong></p>
+<p><strong>6.pthread_mutex_destory ;销毁锁</strong></p>
+<p><strong>初始化互斥量</strong></p>
+<p>pthread_mutex_t mutex</p>
+<p>1.pthread_mutex_init(&amp;mutex,NULL)  动态初始化</p>
+<p>2.pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER  静态初始化</p>
+<p>注意事项：</p>
+<p>尽量保证锁的粒度越小越好，（访问共享数据前加锁，访问结束立即解锁）</p>
+<p>互斥锁，本质是结构体，可以看成整数1</p>
+<p>加锁：–操作  阻塞线程</p>
+<p>解锁：++操作  唤醒阻塞在锁上的线程</p>
+<p>try锁： 尝试加锁，成功–。失败返回EBUSY</p>
+<p>restrict关键字：</p>
+<p>用来限定指针变量。被该关键字限定的指针变量所指向的内存操作，必须由本指针完成。</p>
+<h3 id="死锁："><a href="#死锁：" class="headerlink" title="死锁："></a>死锁：</h3><p>是对锁使用不恰当导致的现象：</p>
+<p>1.对一个锁反复lock  导致自己阻塞在自己身上</p>
+<p>2.两个线程各自持有一把锁，然后请求另一把，相互阻塞</p>
+<h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p>锁只有一把，以读的方式给数据加锁——读锁。以写的方式给数据加锁——写锁。</p>
+<p>读共享、写独占、写的优先级高。</p>
+<p>相对于互斥量而言，当读线程多的时候，提高访问效率</p>
+<p><strong>pthread_rwlock_t  rwlock;</strong><br><strong>pthread_rwlock_init(&amp;rwlock, NULL);</strong><br><strong>pthread_rwlock_rdlock(&amp;rwlock);        try</strong><br><strong>pthread_rwlock_wrlock(&amp;rwlock);        try</strong><br><strong>pthread_rwlock_unlock(&amp;rwlock);</strong><br><strong>pthread_rwlock_destroy(&amp;rwlock);</strong></p>
+<h3 id="条件变量："><a href="#条件变量：" class="headerlink" title="条件变量："></a>条件变量：</h3><p>本身不是锁，但是通常结合锁来使用(mutex)。</p>
+<p><strong>pthread_cond_t cond;</strong></p>
+<p>初始化条件变量：</p>
+<p>1.pthread_cond_init(&amp;cond,NULL)  动态初始化</p>
+<p>2.pthread_cond_t cond = PTHREAD_COND_INITIALIZER  静态初始化</p>
+<p>阻塞等待条件:</p>
+<p><strong>pthread_cond_wait(&amp;cond,&amp;mutex)</strong></p>
+<p>作用: </p>
+<ul>
+<li>阻塞等待条件变量满足</li>
+<li>解锁mutex</li>
+<li>当条件满足的时候，函数返回，重新加锁mutex</li>
+</ul>
+<p><strong>pthread_cond_signal()</strong> 唤醒阻塞在条件变量上的至少一个线程</p>
+<p><strong>pthread_cond_broadcast()</strong>  唤醒阻塞在条件变量上的所有线程</p>
+<h3 id="自旋锁："><a href="#自旋锁：" class="headerlink" title="自旋锁："></a>自旋锁：</h3><p>自旋锁和互斥量类似，但是她不是通过休眠使进程阻塞，而是在获取锁之前一直处于忙等状态（自旋）阻塞状态。自旋锁可以用于以下情况：锁被持有的时间短，而且线程并不希望在重新调度上花费太多的成本。</p>
+<p><strong>pthread_spin_t</strong></p>
+<p><strong>pthread_spin_init</strong></p>
+<p><strong>pthread_spin_destory</strong></p>
+<p><strong>pthread_spin_lock</strong></p>
+<p><strong>pthread_spin_trylock</strong></p>
+<p><strong>pthread_spin_unlock</strong></p>
+<h3 id="屏障："><a href="#屏障：" class="headerlink" title="屏障："></a>屏障：</h3><h3 id="信号量："><a href="#信号量：" class="headerlink" title="信号量："></a>信号量：</h3><p>不仅可以用于线程、还可以用于进程间的同步。</p>
+<p>相当于初始化值为N的互斥量。N值，表示可以同时访问共享数据区的线程数。</p>
+<p><strong>sem_t sem</strong> </p>
+<p>*<em>int sem_init(sem_t <em>sem, int pshared, unsigned int value);</em></em></p>
+<p>para1 信号量</p>
+<p>para2 ：0 用于线程间同步   1：用于进程间同步</p>
+<p>para3：N值   同时访问的线程数</p>
+<p><strong>sem_destory()</strong> </p>
+<p><strong>sem_wait()</strong> 一次调用，做一次–操作，当semaphore的值为0时，下一次调用就会阻塞  (lock)</p>
+<p><strong>sem_post()</strong> 一次调用，组一次++操作，当semaphore为&gt;0时，会唤醒一个阻塞的线程  (unlock)</p>
 
             </div>
             <hr/>
@@ -497,7 +614,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</a>
+                    <a href="http://yoursite.com/2020/10/11/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">http://yoursite.com/2020/10/11/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -704,28 +821,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
+                <a href="/2020/10/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++ Compile and Linking">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="linux网络编程笔记">
                         
-                        <span class="card-title">c++ Compile and Linking</span>
+                        <span class="card-title">linux网络编程笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            c++编译过程预处理、编译、汇编、链接
-compile预处理-编译成机械码
-将文本转换成二进制文件
-需要有一个存储区来存储全局和静态变量
-项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-12
                         </span>
                         <span class="publish-author">
                             
@@ -745,29 +858,25 @@ compile预处理-编译成机械码
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">
+                <a href="/2020/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="算法学习">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="数据库学习">
                         
-                        <span class="card-title">算法学习</span>
+                        <span class="card-title">数据库学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            [toc]
-算法学习双指针两数之和、三数之和、四数之和
-两数之和  排序、然后双指针进行比较即可
-三数之和思路：利用两数之和的双指针的算法套一层循环 同时去重 四数之和同理 在套一层循环即可
-    //三数之和
-    vector&lt
+                            ⑴ 原子性（Atomicity）　　原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，这和前面两篇博客介绍事务的功能是一样的概念，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。
+⑵ 一致性（
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-21
                             </span>
                         <span class="publish-author">
                             

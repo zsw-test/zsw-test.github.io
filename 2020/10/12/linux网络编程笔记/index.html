@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="c++智能指针, Hexo">
+    <meta name="keywords" content="linux网络编程笔记, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>c++智能指针 | Hexo</title>
+    <title>linux网络编程笔记 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">c++智能指针</h1>
+                    <h1 class="description center-align post-title">linux网络编程笔记</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-08-03
+                    2020-10-12
                 </div>
                 
 
@@ -458,21 +458,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="c-智能指针"><a href="#c-智能指针" class="headerlink" title="c++智能指针"></a>c++智能指针</h3><h4 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr<T></T></h4><p>make_shared进行创建对象，</p>
-<p>shared_ptr 的拷贝和赋值会增加其对象内部的引用计数次数</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804154501911.png" alt="image-20200804154501911"></p>
-<p>不要将智能指针和new一起用，容易出现错误。</p>
-<p><strong>如果使用的智能指针管理的资源你不是new分配的内存，应该传递一个删除器来管理删除操作</strong></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155256694.png" alt="image-20200804155256694"></p>
-<h4 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr<T></T></h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160241173.png" alt="image-20200804160241173"></p>
-<h4 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr<T></T></h4><p>unique_ptr不支持拷贝和复制，也没有make_shared，某个时刻智能有一个unique_ptr指向一个给定对象，初始化unique_ptr只能使用new直接初始化方式。</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804155637008.png" alt="image-20200804155637008"></p>
-<p>可以使用release来放弃该对象的操纵权返回一个指针，或者使用reset重置只指向的对象</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160115299.png" alt="image-20200804160115299"></p>
-<h4 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h4><p>弱智能指针 “弱”共享   不改变引用计数  需要由shared_ptr来初始化</p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804160731597.png" alt="image-20200804160731597"></p>
-<p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200804161054150.png" alt="image-20200804161054150"></p>
-
+                
             </div>
             <hr/>
 
@@ -497,7 +483,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">http://yoursite.com/2020/08/03/c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</a>
+                    <a href="http://yoursite.com/2020/10/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">http://yoursite.com/2020/10/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -700,33 +686,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/08/06/c++%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
+                <a href="/2020/10/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++ Compile and Linking">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="linux网络编程笔记">
                         
-                        <span class="card-title">c++ Compile and Linking</span>
+                        <span class="card-title">linux网络编程笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            c++编译过程预处理、编译、汇编、链接
-compile预处理-编译成机械码
-将文本转换成二进制文件
-需要有一个存储区来存储全局和静态变量
-项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -735,6 +718,7 @@ compile预处理-编译成机械码
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -745,34 +729,32 @@ compile预处理-编译成机械码
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/21/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">
+                <a href="/2020/10/11/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="算法学习">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="linux系统编程笔记">
                         
-                        <span class="card-title">算法学习</span>
+                        <span class="card-title">linux系统编程笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            [toc]
-算法学习双指针两数之和、三数之和、四数之和
-两数之和  排序、然后双指针进行比较即可
-三数之和思路：利用两数之和的双指针的算法套一层循环 同时去重 四数之和同理 在套一层循环即可
-    //三数之和
-    vector&lt
+                            线程线程概念：进程：有独立的 进程地址空间，有独立的pcb   分配资源的最小单位
+线程：有独立的pcb 没有独立的进程地址空间   最小的执行单位
+ps-Lf 进程id  线程号 lwp cpu 的最小执行单位
+线程共享：独享栈空间 （内
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            zsw
+                            John Doe
                             
                         </span>
                     </div>

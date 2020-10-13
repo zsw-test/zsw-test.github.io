@@ -520,6 +520,38 @@
 <p>在这种情况下，在main函数中一个while循环结束的时候，pa和pb的析构函数被调用，但是class A对象和class B对象仍然被一个智能指针管理，A object和B object引用计数变成1，于是这两个对象的内存无法被释放，造成内存泄漏，如下图所示</p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/20180920162657161" alt="在这里插入图片描述"></p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>解决方法很简单，把class A或者class B中的shared_ptr改成weak_ptr即可，由于weak_ptr不会增加shared_ptr的引用计数，所以A object和B object中有一个的引用计数为1，在pa和pb析构时，会正确地释放掉内存</p>
+<h3 id="extern-的作用"><a href="#extern-的作用" class="headerlink" title="extern 的作用"></a>extern 的作用</h3><p>extern 表示声明一个变量，并且让程序从其它的地方cpp或者o中找到该变量的定义</p>
+<p>extern “C” 的作用表示 主要是让c++程序兼容C风格的程序编译出来的库文件或者代码，用extern “C” 声明的变量都会，编译器会按照C风格进行编译，因为C不支持函数重载，所以编译出来的名字都是函数名，但是c++将函数参数也添加到了函数名后面，所以在连接的时候找不到所定义的函数或者变量。</p>
+<h3 id="4种类型转换方法总结"><a href="#4种类型转换方法总结" class="headerlink" title="4种类型转换方法总结"></a><strong>4种类型转换方法总结</strong></h3><p>去const属性用const_cast</p>
+<p>基本类型转换用static_cast</p>
+<p>多态类之间的类型转换用dynamic_cast</p>
+<p>不同类型的指针类型转换用reinterpret_cast</p>
+<h3 id="gcc和g-的主要区别"><a href="#gcc和g-的主要区别" class="headerlink" title="gcc和g++的主要区别"></a>gcc和g++的主要区别</h3><ol>
+<li><p>对于 <em>.c和</em>.cpp文件，gcc分别当做c和cpp文件编译（c和cpp的语法强度是不一样的）</p>
+</li>
+<li><p>对于 <em>.c和</em>.cpp文件，g++则统一当做cpp文件编译</p>
+</li>
+<li><p>使用g++编译文件时，<strong>g++会自动链接标准库STL，而gcc不会自动链接STL</strong></p>
+</li>
+<li><p>gcc在编译C文件时，可使用的预定义宏是比较少的</p>
+</li>
+<li><p>gcc在编译cpp文件时/g++在编译c文件和cpp文件时（这时候gcc和g++调用的都是cpp文件的编译器），会加入一些额外的宏，这些宏如下：</p>
+</li>
+</ol>
+<p>#define <strong>GXX_WEAK__ 1<br>#define <strong>cplusplus 1<br>#define __DEPRECATED 1<br>#define __GNUG</strong> 4<br>#define __EXCEPTIONS 1<br>#define __private_extern</strong> extern</p>
+<ol start="6">
+<li>在用gcc编译c++文件时，为了能够使用STL，需要加参数 –lstdc++ ，但这并不代表 gcc –lstdc++ 和 g++等价，它们的区别不仅仅是这个</li>
+</ol>
+<p>主要参数</p>
+<p>-g - turn on debugging (so GDB gives morefriendly output)</p>
+<p>-Wall - turns on most warnings</p>
+<p>-O or -O2 - turn on optimizations</p>
+<p>-o - name of the output file</p>
+<p>-c - output an object file (.o)</p>
+<p>-I - specify an includedirectory</p>
+<p>-L - specify a libdirectory</p>
+<p>-l - link with librarylib.a</p>
+<p>使用示例：g++ -ohelloworld -I/homes/me/randomplace/include helloworld.C</p>
 
             </div>
             <hr/>
@@ -801,10 +833,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            c++编译过程compile预处理-编译成机械码
+                            c++编译过程预处理、编译、汇编、链接
+compile预处理-编译成机械码
 将文本转换成二进制文件
 需要有一个存储区来存储全局和静态变量
-项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互in
+项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编
                         
                     </div>
                     <div class="publish-info">

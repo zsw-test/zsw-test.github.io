@@ -459,13 +459,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200821104856151.png"></p>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg" alt="img">****</p>
 <h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200821104856151.png" alt="image-20200821104856151"></p>
-<p>为什么三次握手</p>
-<p>因为如果是两次的话，第一次发送的SYN连接的请求有可能延迟到达服务器，但是如果达到的时候两端早就已经关闭了，那么服务端还会发送一个SYN ACK到客户端，但是这是客户端已经关闭了，所以服务端就会进入建立状态，所以还需要一次对于服务器发送的SYN ACK 的ACK确认，确保客户端收到了SYN请求。</p>
-<p>为什么四次挥手</p>
-<p>因为在客户端发送FIN的时候，服务端有可能在发送数据，所以ACK 和FIN要分开发送，等数据发送完了在发送FIN通知客户端关闭，客户端发送了FIN的ACK之后要等待2msl </p>
-<p>保证全双工连接的正确关闭，保证服务端受到ACK。</p>
+<h5 id="为什么三次握手"><a href="#为什么三次握手" class="headerlink" title="为什么三次握手"></a>为什么三次握手</h5><p>因为如果是两次的话，第一次发送的SYN连接的请求有可能延迟到达服务器，但是如果达到的时候两端早就已经关闭了，那么服务端还会发送一个SYN ACK到客户端，但是这是客户端已经关闭了，所以服务端就会进入建立状态，所以还需要一次对于服务器发送的SYN ACK 的ACK确认，确保客户端收到了SYN请求。</p>
+<p>减少服务器的开销和接受到失效请求发生的错误</p>
+<h5 id="为什么四次挥手"><a href="#为什么四次挥手" class="headerlink" title="为什么四次挥手"></a>为什么四次挥手</h5><p>因为在客户端发送FIN的时候，服务端有可能在发送数据，所以ACK 和FIN要分开发送，等数据发送完了在发送FIN通知客户端关闭，</p>
+<h5 id="客户端等待2msl原因"><a href="#客户端等待2msl原因" class="headerlink" title="客户端等待2msl原因"></a>客户端等待2msl原因</h5><p>客户端发送了FIN的ACK之后要等待2msl ，服务器端在1MSL内没有收到客户端发出的ACK确认报文，就会再次向客户端发出FIN报文；</p>
+<p>保证全双工连接的正确关闭，保证服务端收到ACK。</p>
 <p>保证重复数据的消失，避免新的连接（同一个端口）收到了不应该受到的数据。</p>
 <h5 id="TCP保证可靠传输"><a href="#TCP保证可靠传输" class="headerlink" title="TCP保证可靠传输"></a>TCP保证可靠传输</h5><p>确认和重传机制（停止等待协议）</p>
 <h4 id="累计确认（连续ARQ协议）"><a href="#累计确认（连续ARQ协议）" class="headerlink" title="累计确认（连续ARQ协议）"></a>累计确认（连续ARQ协议）</h4><p> 对按序到达的最后一个分组发送确认</p>
@@ -791,10 +791,9 @@ PCB(进程控制块) 进程的管理者
                     <div class="summary block-with-text">
                         
                             [toc]
-三次握手
+三次握手****
 四次挥手
-为什么三次握手
-因为如果是两次的话，第一次发送的SYN连接的请求有可能延迟到达服务器，但是如果达到的时候两端早就已经关闭了，那么服务端还会发送一个SYN ACK到客户端，但是这是客户端已经关闭了，所以服务端就
+为什么三次握手因为如果是两次的话，第一次发送的SYN连接的请求有可能延迟到达服务器，但是如果达到的时候两端早就已经关闭了，那么服务端还会发送一个SYN ACK到客户端，但是这是客户端已经关闭了，所以服
                         
                     </div>
                     <div class="publish-info">

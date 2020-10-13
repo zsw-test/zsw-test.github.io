@@ -459,7 +459,68 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><h4 id="leetcode-20-有效的括号"><a href="#leetcode-20-有效的括号" class="headerlink" title="leetcode 20 有效的括号"></a>leetcode 20 有效的括号</h4><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<h2 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><p>两数之和、三数之和、四数之和</p>
+<p>两数之和  排序、然后双指针进行比较即可</p>
+<h4 id="三数之和"><a href="#三数之和" class="headerlink" title="三数之和"></a>三数之和</h4><p>思路：利用两数之和的双指针的算法套一层循环 同时去重 四数之和同理 在套一层循环即可</p>
+<pre><code>    //三数之和
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        sort(nums.begin(),nums.end());
+        int n= nums.size();
+        for(int a=0;a&lt;n;++a)
+        &#123;
+            if(a&gt;0&amp;&amp;nums[a-1]==nums[a]) continue; //去重;
+            int i=a+1;
+            int j =n-1;
+            while(i&lt;j)
+            &#123;
+                int sum= nums[a]+nums[i]+nums[j];
+                if(sum==0)
+                &#123;
+                    ans.push_back(&#123;nums[a],nums[i],nums[j]&#125;);
+                    //去重;
+                    while(i&lt;j&amp;&amp;nums[i]==nums[i+1])++i;
+                    while(i&lt;j&amp;&amp;nums[j]==nums[j-1])--j;
+                    ++i;
+                    --j;
+                &#125;else if(sum&lt;0) ++i;
+                 else --j;
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+    //四数之和：
+    vector&lt;vector&lt;int&gt;&gt; fourSum(vector&lt;int&gt;&amp; nums, int target) &#123;
+        sort(nums.begin(),nums.end());
+        vector&lt;vector&lt;int&gt;&gt; result;
+        int size=nums.size();
+        for(int a=0;a&lt;size-3;++a)
+        &#123;
+            if(a&gt;0&amp;&amp;nums[a]==nums[a-1])continue;
+            for(int b=a+1;b&lt;size-2;++b)//以下代码与三数之和一样的
+            &#123;
+                if(b&gt;a+1&amp;&amp;nums[b]==nums[b-1])continue;
+                int i=b+1,j=size-1;
+                while(i&lt;j)
+                &#123;
+                    int sum=nums[a]+nums[b]+nums[i]+nums[j];
+                    if(sum&lt;target)
+                        ++i;
+                    else if(sum&gt;target)
+                        --j;
+                    else&#123;
+                        result.push_back(vector&lt;int&gt;&#123;nums[a],nums[b],nums[i],nums[j]&#125;);
+                        //去重
+                        while(i&lt;j&amp;&amp;nums[i]==nums[++i]);
+                        while(i&lt;j&amp;&amp;nums[j]==nums[--j]);
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return result;
+    &#125;</code></pre>
+<h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><h4 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h4><p>Prim Kurskal</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><h4 id="leetcode-20-有效的括号"><a href="#leetcode-20-有效的括号" class="headerlink" title="leetcode 20 有效的括号"></a>leetcode 20 有效的括号</h4><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。</p>
 <p>思路：<strong>利用栈来存储左括号，遇到右括号的时候就弹出判断是不是对应的左括号。</strong></p>
 <pre><code>bool isValid(string s) &#123;
@@ -673,7 +734,84 @@ return true;  //如果遍历了每个皇后放的位置都不产生冲突的话 
     &#125;
     return res;
 &#125;</code></pre>
-<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="二叉树的最近公共祖先"><a href="#二叉树的最近公共祖先" class="headerlink" title="二叉树的最近公共祖先"></a>二叉树的最近公共祖先</h4><pre><code>//寻找二叉树节点的最近公共祖先
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>三种 左右根  左根右  左右根</p>
+<p>递归遍历很简单</p>
+<p>迭代法：通过加入一个nulll来判断根节点是否被加入到集合过， 中节点访问过，但是还没有处理，加入空节点做为标记。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/bang-ni-dui-er-cha-shu-bu-zai-mi-mang-che-di-chi-t/">https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/bang-ni-dui-er-cha-shu-bu-zai-mi-mang-che-di-chi-t/</a></p>
+<pre><code>//前序：
+ vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        if (root != NULL) st.push(root);
+        while (!st.empty()) &#123;
+            TreeNode* node = st.top();
+            if (node != NULL) &#123;
+                st.pop();
+                if (node-&gt;right) st.push(node-&gt;right);  // 右
+                if (node-&gt;left) st.push(node-&gt;left);    // 左
+                st.push(node);                          // 中
+                st.push(NULL);
+            &#125; else &#123;
+                st.pop();
+                node = st.top();
+                st.pop();
+                result.push_back(node-&gt;val);
+            &#125;
+        &#125;
+        return result;
+    &#125;
+
+//中序
+vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        if (root != NULL) st.push(root);
+        while (!st.empty()) &#123;
+            TreeNode* node = st.top();
+            if (node != NULL) &#123;
+                st.pop(); // 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中
+                if (node-&gt;right) st.push(node-&gt;right);  // 添加右节点（空节点不入栈）
+
+                st.push(node);                          // 添加中节点
+                st.push(NULL); // 中节点访问过，但是还没有处理，加入空节点做为标记。
+
+                if (node-&gt;left) st.push(node-&gt;left);    // 添加左节点（空节点不入栈）
+            &#125; else &#123; // 只有遇到空节点的时候，才将下一个节点放进结果集
+                st.pop();           // 将空节点弹出
+                node = st.top();    // 重新取出栈中元素
+                st.pop();
+                result.push_back(node-&gt;val); // 加入到结果集
+            &#125;
+        &#125;
+        return result;
+    &#125;
+
+//后序
+ vector&lt;int&gt; postorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; result;
+        stack&lt;TreeNode*&gt; st;
+        if (root != NULL) st.push(root);
+        while (!st.empty()) &#123;
+            TreeNode* node = st.top();
+            if (node != NULL) &#123;
+                st.pop();
+                st.push(node);                          // 中
+                st.push(NULL);
+
+                if (node-&gt;right) st.push(node-&gt;right);  // 右
+                if (node-&gt;left) st.push(node-&gt;left);    // 左
+
+            &#125; else &#123;
+                st.pop();
+                node = st.top();
+                st.pop();
+                result.push_back(node-&gt;val);
+            &#125;
+        &#125;
+        return result;
+    &#125;</code></pre>
+<p>​<br>​    </p>
+<h4 id="二叉树的最近公共祖先"><a href="#二叉树的最近公共祖先" class="headerlink" title="二叉树的最近公共祖先"></a>二叉树的最近公共祖先</h4><pre><code>//寻找二叉树节点的最近公共祖先
 //二叉搜索树
 class Solution &#123;
 public:
@@ -916,7 +1054,7 @@ public:
 <p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。 </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/">https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/</a></p>
 <p><img src="https://gitee.com/zhang453787298/picgo/raw/master/img/image-20200722110440553.png" alt="image-20200722110440553"></p>
-<h4 id="LRUcache实现"><a href="#LRUcache实现" class="headerlink" title="LRUcache实现"></a>LRUcache实现</h4><p>请你为 最不经常使用（LFU）缓存算法设计并实现数据结构。它应该支持以下操作：get 和 put。</p>
+<h3 id="LRUcache实现"><a href="#LRUcache实现" class="headerlink" title="LRUcache实现"></a>LRUcache实现</h3><p>请你为 最不经常使用（LFU）缓存算法设计并实现数据结构。它应该支持以下操作：get 和 put。</p>
 <p>get(key) - 如果键存在于缓存中，则获取键的值（总是正数），否则返回 -1。<br>put(key, value) - 如果键已存在，则变更其值；如果键不存在，请插入键值对。当缓存达到其容量时，则应该在插入新项之前，使最不经常使用的项无效。在此问题中，当存在平局（即两个或更多个键具有相同使用频率）时，应该去除最久未使用的键。<br>「项的使用次数」就是自插入该项以来对其调用 get 和 put 函数的次数之和。使用次数会在对应项被移除后置为 0 。</p>
 <pre><code>class LRUCache &#123;
 public:
@@ -963,6 +1101,25 @@ public:
         &#125;
     &#125;
 &#125;;</code></pre>
+<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><pre><code>struct UnionFind &#123;
+    vector &lt;int&gt; ancestor;
+
+    UnionFind(int n) &#123;
+        ancestor.resize(n);
+        for (int i = 0; i &lt; n; ++i) &#123;
+            ancestor[i] = i;
+        &#125;
+    &#125;
+
+    int find(int index) &#123;  //如果asncetor[i] = i 那么就是祖宗 否则就递归查找祖宗的祖宗
+        return index == ancestor[index] ? index : ancestor[index] = find(ancestor[index]);
+    &#125;
+
+    void merge(int u, int v) &#123;
+        ancestor[find(u)] = find(v);
+    &#125;
+&#125;;
+template</code></pre>
 
             </div>
             <hr/>

@@ -458,7 +458,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="c-编译过程"><a href="#c-编译过程" class="headerlink" title="c++编译过程"></a>c++编译过程</h4><h5 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h5><p>预处理-编译成机械码</p>
+                <h4 id="c-编译过程"><a href="#c-编译过程" class="headerlink" title="c++编译过程"></a>c++编译过程</h4><p>预处理、编译、汇编、链接</p>
+<h5 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h5><p>预处理-编译成机械码</p>
 <p>将文本转换成二进制文件</p>
 <p>需要有一个存储区来存储全局和静态变量</p>
 <p>项目里的每个cpp都会被编译器编译成一个obj，这些cpp也是translation unity （编译单元），如果没有相互include的话，那么每个都会被当成一个独立编译单元，被编译成obj。</p>
@@ -467,7 +468,7 @@
 <p>就是将include的头文件复制粘贴过来   #include  相当于复制粘贴</p>
 <p>编译器优化  会在编译（生成机器码）的过程中将一些可以直接计算的常量计算出来，会智能的减少一些无谓的操作。</p>
 <h5 id="linker"><a href="#linker" class="headerlink" title="linker"></a>linker</h5><p>将c++源码转换到可执行二进制的过程 </p>
-<p>将编译过程中生辰搞的所有对象文件链接起来，找到每个符号和函数的位置，并将它们链接在一起。</p>
+<p>将编译过程中生成的所有对象文件链接起来，找到每个符号和函数的位置，并将它们链接在一起。</p>
 <p>容易出现的链接错误：</p>
 <p>1、unresolved external symbol（未解决的外部符号），当链接器找不到它需要的东西的时候就会出现错误。</p>
 <p>2、找到了一个或多个被定义的符号，链接器找到了多个可以链接的东西。不知道该链接到哪一个。</p>

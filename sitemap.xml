@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://examplesite.com/</loc>
+    <loc>https://zsw-test.github.io/posts/</loc>
     <lastmod>2023-07-13T11:21:59+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/posts/</loc>
+    <loc>https://zsw-test.github.io/tags/</loc>
     <lastmod>2023-07-13T11:21:59+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/</loc>
+    <loc>https://zsw-test.github.io/posts/test2/</loc>
     <lastmod>2023-07-13T11:21:59+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/posts/test2/</loc>
+    <loc>https://zsw-test.github.io/</loc>
     <lastmod>2023-07-13T11:21:59+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://zsw-test.github.io/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2023-07-13T11:21:59+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/posts/blog-test/</loc>
+    <loc>https://zsw-test.github.io/posts/blog-test/</loc>
     <lastmod>2023-07-13T11:12:50+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://zsw-test.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2023-07-13T11:12:50+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/categories/</loc>
+    <loc>https://zsw-test.github.io/categories/</loc>
   </url>
 </urlset>

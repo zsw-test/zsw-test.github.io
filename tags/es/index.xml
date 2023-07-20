@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>es on zhangsiwei&#39;s blog</title>
+    <link>https://zsw-test.github.io/tags/es/</link>
+    <description>Recent content in es on zhangsiwei&#39;s blog</description>
+    <image>
+      <title>zhangsiwei&#39;s blog</title>
+      <url>https://zsw-test.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://zsw-test.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Jul 2023 20:23:52 +0800</lastBuildDate><atom:link href="https://zsw-test.github.io/tags/es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ES multi_match&#43;minimum_should_match用法</title>
+      <link>https://zsw-test.github.io/posts/multi_match&#43;minimum_should_match/</link>
+      <pubDate>Thu, 20 Jul 2023 20:23:52 +0800</pubDate>
+      
+      <guid>https://zsw-test.github.io/posts/multi_match&#43;minimum_should_match/</guid>
+      <description>ES multi_match+minimum_should_match用法 minimum_should_match的用法不多赘述，官网有，什么 3&amp;lt;90% 之类的。 这次说一下多字段查询multi_match配合minimum_should_match的用法 为了在多个字段上查询，同时控制最小匹配分词数量，可以使用这样的方式，这样会在title和tags上进行查询匹配，ik_smart分词结果为 [徐峥,沈腾,黄渤,吃火锅]，2个字段上进行查询，最少需要满足3个词语匹配，既满足3个词语即可。
+&amp;#34;query&amp;#34;: { &amp;#34;multi_match&amp;#34;: { // 多字段查询 &amp;#34;query&amp;#34;:&amp;#34;徐峥沈腾黄渤吃火锅&amp;#34;, // 查询text &amp;#34;fields&amp;#34;:[&amp;#34;title&amp;#34;,&amp;#34;tags&amp;#34;], // 匹配title，tags 字段 &amp;#34;minimum_should_match&amp;#34;:3 // query分词后最少满足3个 } } } 这里的3是query词的匹配个数，而不是匹配次数。是需要这四个词里面满足3个匹配上，若一个词匹配多次不算哦，匹配多次的话好像分数会高一点。如图 参考：https://blog.csdn.net/deeqm66200/article/details/102108691</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -18,8 +18,10 @@
       <pubDate>Thu, 20 Jul 2023 20:23:52 +0800</pubDate>
       
       <guid>https://zsw-test.github.io/posts/multi_match&#43;minimum_should_match/</guid>
-      <description>ES multi_match+minimum_should_match用法 minimum_should_match的用法不多赘述，官网有，什么 3&amp;lt;90% 之类的。 这次说一下多字段查询multi_match配合minimum_should_match的用法 为了在多个字段上查询，同时控制最小匹配分词数量，可以使用这样的方式，这样会在title和tags上进行查询匹配，ik_smart分词结果为 [徐峥,沈腾,黄渤,吃火锅]，2个字段上进行查询，最少需要满足3个词语匹配，既满足3个词语即可。
-&amp;#34;query&amp;#34;: { &amp;#34;multi_match&amp;#34;: { // 多字段查询 &amp;#34;query&amp;#34;:&amp;#34;徐峥沈腾黄渤吃火锅&amp;#34;, // 查询text &amp;#34;fields&amp;#34;:[&amp;#34;title&amp;#34;,&amp;#34;tags&amp;#34;], // 匹配title，tags 字段 &amp;#34;minimum_should_match&amp;#34;:3 // query分词后最少满足3个 } } } 这里的3是query词的匹配个数，而不是匹配次数。是需要这四个词里面满足3个匹配上，若一个词匹配多次不算哦，匹配多次的话好像分数会高一点。如图 参考：https://blog.csdn.net/deeqm66200/article/details/102108691</description>
+      <description>ES multi_match+minimum_should_match用法 minimum_should_match的用法不多赘述，官网有，什么 3&amp;lt;90% 之类的。
+这次说一下多字段查询multi_match配合minimum_should_match的用法 为了在多个字段上查询，同时控制最小匹配分词数量，可以使用这样的方式，这样会在title和tags上进行查询匹配，ik_smart分词结果为 [徐峥,沈腾,黄渤,吃火锅]，2个字段上进行查询，最少需要满足3个词语匹配，既满足3个词语即可。
+&amp;#34;query&amp;#34;: { &amp;#34;multi_match&amp;#34;: { // 多字段查询 &amp;#34;query&amp;#34;:&amp;#34;徐峥沈腾黄渤吃火锅&amp;#34;, // 查询text &amp;#34;fields&amp;#34;:[&amp;#34;title&amp;#34;,&amp;#34;tags&amp;#34;], // 匹配title，tags 字段 &amp;#34;minimum_should_match&amp;#34;:3 // query分词后最少满足3个 } } } 这里的3是query词的匹配个数，而不是匹配次数。是需要这四个词里面满足3个匹配上，若一个词匹配多次不算哦，匹配多次的话好像分数会高一点。如图:
+匹配1次： 匹配2次，分数高了点： minimum_should_match:2，没有返回结果: 参考： https://blog.csdn.net/deeqm66200/article/details/102108691</description>
     </item>
     
     <item>
